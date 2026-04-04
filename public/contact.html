@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - BookHaven</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/revenue.css">
+    <style>
+        .contact-page-header {
+            padding: 128px 0 48px;
+            background: linear-gradient(140deg, #e0e7ff 0%, #f8fafc 100%);
+        }
+        .contact-wrap {
+            max-width: 980px;
+            margin: 0 auto 50px;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+            animation: fadeInUp .55s ease;
+        }
+        .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+        .contact-grid .full { grid-column:1 / -1; }
+        .field label { display:block; font-weight:600; margin-bottom:8px; color:#334155; }
+        .field input, .field textarea, .field select {
+            width:100%;
+            border:1px solid #e2e8f0;
+            border-radius:10px;
+            padding:12px 14px;
+            background: #f8fafc;
+            color: #0f172a;
+            transition: all .25s ease;
+        }
+        .field input:focus, .field textarea:focus, .field select:focus {
+            outline: none;
+            border-color: #4f46e5;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, .12);
+        }
+        .field textarea { min-height:140px; resize:vertical; }
+        .btn-submit {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color:#fff;
+            border:none;
+            border-radius:10px;
+            padding:13px 16px;
+            cursor:pointer;
+            font-weight: 600;
+            transition: all .28s ease;
+        }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(79,70,229,.28); }
+        .hint { color:#64748b; font-size:14px; margin-bottom:14px; }
+        .ok, .err { margin-top:14px; padding:12px; border-radius:10px; display:none; }
+        .ok { background:#e8f7ef; color:#1d7a47; }
+        .err { background:#fdeaea; color:#b42318; }
+        @media (max-width: 700px){ .contact-grid{ grid-template-columns:1fr; } .contact-wrap{padding:18px;} }
+        .contact-outer .contact-wrap {
+            max-width: 100%;
+            margin: 0 0 50px;
+        }
+    </style>
+</head>
+<body data-no-offer-popup="true">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><i class="fas fa-book-open"></i><span>BookHaven</span></a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="catalog.html">Catalog</a>
+                <a href="contact.html" class="active">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="contact-page-header">
+        <div class="container">
+            <div class="section-header">
+                <h2>Customer Feedback & Contact Us</h2>
+                <p>Your feedback powers our IDIC CRM flow and service improvements.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container contact-outer">
+    <div class="contact-wrap">
+        <p class="hint">Tell us what you liked, what broke, or what you want next.</p>
+
+        <form id="feedback-form" class="contact-grid">
+            <div class="field">
+                <label>Name</label>
+                <input id="name" required>
+            </div>
+            <div class="field">
+                <label>Email</label>
+                <input id="email" type="email" required>
+            </div>
+            <div class="field">
+                <label>Category</label>
+                <select id="category">
+                    <option value="general">General</option>
+                    <option value="order">Order</option>
+                    <option value="payment">Payment</option>
+                    <option value="catalog">Catalog</option>
+                    <option value="delivery">Delivery</option>
+                    <option value="support">Support</option>
+                </select>
+            </div>
+            <div class="field">
+                <label>Rating</label>
+                <select id="rating">
+                    <option value="5">5 - Excellent</option>
+                    <option value="4">4 - Good</option>
+                    <option value="3">3 - Average</option>
+                    <option value="2">2 - Poor</option>
+                    <option value="1">1 - Bad</option>
+                </select>
+            </div>
+            <div class="field full">
+                <label>Subject</label>
+                <input id="subject" required>
+            </div>
+            <div class="field full">
+                <label>Message</label>
+                <textarea id="message" required></textarea>
+            </div>
+            <div class="field full">
+                <button class="btn-submit" type="submit"><i class="fas fa-paper-plane"></i> Submit Feedback</button>
+            </div>
+        </form>
+        <div id="ok" class="ok">Thanks! Your feedback has been recorded.</div>
+        <div id="err" class="err"></div>
+    </div>
+    <aside class="contact-revenue-side" aria-label="Partners and advertising">
+        <h4>Partner &amp; ad inquiries</h4>
+        <article class="ad-card">
+            <div class="ad-card-media" style="height:100px;background-image:url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&q=80');"></div>
+            <div class="ad-card-body">
+                <h4>B2B placements</h4>
+                <p>Sponsored slots next to feedback forms — high trust context for brands.</p>
+                <a href="mailto:ads@bookhaven.com?subject=BookHaven%20advertising" class="ad-cta">ads@bookhaven.com <i class="fas fa-external-link-alt"></i></a>
+            </div>
+        </article>
+        <article class="ad-card">
+            <div class="ad-card-body">
+                <span class="ad-card-label">Referral</span>
+                <h4>Earn on every share</h4>
+                <p>15% off for friends, ₹100 for you — <a href="index.html#refer-earn">referral hub</a>.</p>
+            </div>
+        </article>
+    </aside>
+    </div>
+    <script src="js/api-config.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>
+

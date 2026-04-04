@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Book Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .signup-box {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+            width: 400px;
+            max-width: 90%;
+        }
+        .signup-box h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            color: #333;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .links a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .note {
+            margin-top: 12px;
+            padding: 12px 14px;
+            background: #fff8e6;
+            border: 1px solid #ffe4a6;
+            color: #5a4400;
+            border-radius: 10px;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .error {
+            display: none;
+            margin-top: 14px;
+            padding: 12px 14px;
+            background: #fff3f3;
+            border: 1px solid #f5c2c7;
+            color: #c82333;
+            border-radius: 10px;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #2c3e50;
+            color: white;
+            padding: 14px 18px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+            z-index: 9999;
+        }
+        .toast.show { opacity: 1; visibility: visible; }
+    </style>
+</head>
+<body>
+    <div class="signup-box">
+        <h1>Create Account</h1>
+        <p id="ref-welcome" class="note" style="display:none;background:#ecfdf5;border-color:#86efac;color:#14532d;"></p>
+        <form id="signup-form">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="name" required autocomplete="name">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="email" required autocomplete="email">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password" required autocomplete="new-password">
+            </div>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" id="confirm-password" required autocomplete="new-password">
+            </div>
+            <button type="submit" class="btn">Create Account</button>
+        </form>
+        <div id="error-box" class="error"></div>
+        <div class="links">
+            <p>Already have an account? <a href="login.html">Sign in</a></p>
+        </div>
+        <div class="note">
+            After signup you will be redirected to <strong>OTP Setup</strong> to scan a QR code (Google Authenticator) and confirm a 6‑digit code.<br>
+            Open this page using <code>http://localhost:3001/signup.html</code> (not file://).
+        </div>
+    </div>
+
+    <div class="toast" id="toast">
+        <span id="toast-message"></span>
+    </div>
+
+    <script>
+        if (location.protocol === 'file:') {
+            const err = document.getElementById('error-box');
+            err.style.display = 'block';
+            err.textContent = 'This page must be opened via http://localhost:3001/signup.html (not file://).';
+        }
+        (function () {
+            var ref = new URLSearchParams(location.search).get('ref');
+            var el = document.getElementById('ref-welcome');
+            if (ref && el) {
+                el.style.display = 'block';
+                var esc = String(ref).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+                el.innerHTML = 'Referral code <strong>' + esc + '</strong> detected — you may qualify for <strong>15% off</strong> your first order at checkout.';
+            }
+        })();
+    </script>
+    <script src="js/api-config.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

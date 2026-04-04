@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details - Online Book Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/book-details.css">
+    <link rel="stylesheet" href="css/revenue.css">
+</head>
+<body data-no-offer-popup="true">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-book-open"></i>
+                <span>BookHaven</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="catalog.html">Catalog</a>
+                <a href="wishlist.html" class="wishlist-link" aria-label="Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="wishlist-count">0</span>
+                </a>
+                <a href="#" id="nav-cart" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <div id="auth-links">
+                    <a href="login.html" class="btn-login">Login</a>
+                    <a href="signup.html" class="btn-signup">Sign Up</a>
+                </div>
+                <div id="user-menu" class="user-menu" style="display: none;">
+                    <a href="#" id="username-display"></a>
+                    <div class="dropdown">
+                        <a href="profile.html">My Profile</a>
+                        <a href="orders.html">My Orders</a>
+                        <a href="admin.html" id="admin-link" style="display: none;">Admin Dashboard</a>
+                        <a href="#" onclick="logout()">Logout</a>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Book Details Section -->
+    <section class="book-details-section">
+        <div class="container">
+            <div class="book-details-grid" id="book-details">
+                <div class="loading-spinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading book details...</p>
+                </div>
+            </div>
+            <div class="detail-revenue-row">
+                <div class="detail-revenue-ad">
+                    <span class="ad-card-label">Advertisement</span>
+                    <article class="ad-card">
+                        <div class="ad-card-media" style="background-image:url('https://images.unsplash.com/photo-1481627834876-b7833add8e49?w=600&q=80');"></div>
+                        <div class="ad-card-body">
+                            <h4>Reading light &amp; accessories</h4>
+                            <p>Product listing ads — partners bid for placement next to book detail views.</p>
+                            <a href="catalog.html" class="ad-cta">More books <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+                <div class="detail-referral-mini">
+                    <h4><i class="fas fa-gift"></i> Share &amp; save</h4>
+                    <p>Detail pages are prime for referral CTAs: copy your code and send friends <strong>15% off</strong> their first order.</p>
+                    <p style="margin-bottom:10px;font-family:monospace;font-size:1rem;"><strong data-referral-code>—</strong></p>
+                    <div class="mini-actions">
+                        <button type="button" class="btn-copy-code" data-copy-referral-code><i class="fas fa-copy"></i> Copy code</button>
+                        <button type="button" class="btn-copy-code" data-copy-referral style="background:var(--gradient);color:#fff;border:none;"><i class="fas fa-link"></i> Copy link</button>
+                    </div>
+                </div>
+            </div>
+            <div class="personal-request-cta">
+                <p>Can't find the book you want?</p>
+                <a href="profile.html#request" class="btn-primary">Request a Personal Book</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>BookHaven</h3>
+                    <p>Your trusted online bookstore since 2020.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="catalog.html">Catalog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BookHaven. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2><i class="fas fa-shopping-cart"></i> Your Cart</h2>
+            <button class="cart-close" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <div class="empty-cart">
+                <i class="fas fa-shopping-basket"></i>
+                <p>Your cart is empty</p>
+                <a href="catalog.html" class="btn-primary">Start Shopping</a>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total-price">$0.00</span>
+            </div>
+            <button class="btn-checkout" onclick="checkout()">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message">Item added to cart!</span>
+    </div>
+
+    <script src="js/api-config.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/book-details.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/revenue-features.js"></script>
+</body>
+</html>

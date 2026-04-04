@@ -1,0 +1,202 @@
+Goodreads 10k dataset (goodbooks-10k books.csv) — first 200 titles
+
+1. The Hunger Games (The Hunger Games, #1) — Suzanne Collins — ₹375
+2. Harry Potter and the Sorcerer's Stone (Harry Potter, #1) — J.K. Rowling — ₹390
+3. Twilight (Twilight, #1) — Stephenie Meyer — ₹368
+4. To Kill a Mockingbird — Harper Lee — ₹405
+5. The Great Gatsby — F. Scott Fitzgerald — ₹402
+6. The Fault in Our Stars — John Green — ₹427
+7. The Hobbit — J.R.R. Tolkien — ₹438
+8. The Catcher in the Rye — J.D. Salinger — ₹431
+9. Angels & Demons  (Robert Langdon, #1) — Dan Brown — ₹444
+10. Pride and Prejudice — Jane Austen — ₹470
+11. The Kite Runner — Khaled Hosseini — ₹482
+12. Divergent (Divergent, #1) — Veronica Roth — ₹492
+13. 1984 — George Orwell — ₹499
+14. Animal Farm — George Orwell — ₹500
+15. The Diary of a Young Girl — Anne Frank — ₹520
+16. The Girl with the Dragon Tattoo (Millennium, #1) — Stieg Larsson — ₹531
+17. Catching Fire (The Hunger Games, #2) — Suzanne Collins — ₹549
+18. Harry Potter and the Prisoner of Azkaban (Harry Potter, #3) — J.K. Rowling — ₹569
+19. The Fellowship of the Ring (The Lord of the Rings, #1) — J.R.R. Tolkien — ₹573
+20. Mockingjay (The Hunger Games, #3) — Suzanne Collins — ₹572
+21. Harry Potter and the Order of the Phoenix (Harry Potter, #5) — J.K. Rowling — ₹599
+22. The Lovely Bones — Alice Sebold — ₹584
+23. Harry Potter and the Chamber of Secrets (Harry Potter, #2) — J.K. Rowling — ₹618
+24. Harry Potter and the Goblet of Fire (Harry Potter, #4) — J.K. Rowling — ₹635
+25. Harry Potter and the Deathly Hallows (Harry Potter, #7) — J.K. Rowling — ₹649
+26. The Da Vinci Code (Robert Langdon, #2) — Dan Brown — ₹629
+27. Harry Potter and the Half-Blood Prince (Harry Potter, #6) — J.K. Rowling — ₹669
+28. Lord of the Flies — William Golding — ₹645
+29. Romeo and Juliet — William Shakespeare — ₹660
+30. Gone Girl — Gillian Flynn — ₹682
+31. The Help — Kathryn Stockett — ₹709
+32. Of Mice and Men — John Steinbeck — ₹697
+33. Memoirs of a Geisha — Arthur Golden — ₹717
+34. Fifty Shades of Grey (Fifty Shades, #1) — E.L. James — ₹712
+35. The Alchemist — Paulo Coelho — ₹729
+36. The Giver (The Giver, #1) — Lois Lowry — ₹752
+37. The Lion, the Witch, and the Wardrobe (Chronicles of Narnia, #1) — C.S. Lewis — ₹358
+38. The Time Traveler's Wife — Audrey Niffenegger — ₹360
+39. A Game of Thrones (A Song of Ice and Fire, #1) — George R.R. Martin — ₹390
+40. Eat, Pray, Love — Elizabeth Gilbert — ₹365
+41. The Lightning Thief (Percy Jackson and the Olympians, #1) — Rick Riordan — ₹404
+42. Little Women (Little Women, #1) — Louisa May Alcott — ₹408
+43. Jane Eyre — Charlotte Brontë — ₹421
+44. The Notebook (The Notebook, #1) — Nicholas Sparks — ₹430
+45. Life of Pi — Yann Martel — ₹434
+46. Water for Elephants — Sara Gruen — ₹453
+47. The Book Thief — Markus Zusak — ₹475
+48. Fahrenheit 451 — Ray Bradbury — ₹471
+49. New Moon (Twilight, #2) — Stephenie Meyer — ₹465
+50. Where the Sidewalk Ends — Shel Silverstein — ₹505
+51. City of Bones (The Mortal Instruments, #1) — Cassandra Clare — ₹510
+52. Eclipse (Twilight, #3) — Stephenie Meyer — ₹504
+53. Eragon (The Inheritance Cycle, #1) — Christopher Paolini — ₹522
+54. The Hitchhiker's Guide to the Galaxy (Hitchhiker's Guide to the Galaxy, #1) — Douglas Adams — ₹546
+55. Brave New World — Aldous Huxley — ₹548
+56. Breaking Dawn (Twilight, #4) — Stephenie Meyer — ₹549
+57. The Secret Life of Bees — Sue Monk Kidd — ₹571
+58. The Adventures of Huckleberry Finn — Mark Twain — ₹574
+59. Charlotte's Web — E.B. White — ₹599
+60. The Curious Incident of the Dog in the Night-Time — Mark Haddon — ₹598
+61. The Girl on the Train — Paula Hawkins — ₹610
+62. The Golden Compass (His Dark Materials, #1) — Philip Pullman — ₹624
+63. Wuthering Heights — Emily Brontë — ₹630
+64. My Sister's Keeper — Jodi Picoult — ₹650
+65. Slaughterhouse-Five — Kurt Vonnegut Jr. — ₹661
+66. Gone with the Wind — Margaret Mitchell — ₹681
+67. A Thousand Splendid Suns — Khaled Hosseini — ₹694
+68. The Perks of Being a Wallflower — Stephen Chbosky — ₹700
+69. Insurgent (Divergent, #2) — Veronica Roth — ₹706
+70. Ender's Game (Ender's Saga, #1) — Orson Scott Card — ₹725
+71. Frankenstein — Mary Wollstonecraft Shelley — ₹716
+72. The Shining (The Shining #1) — Stephen King — ₹742
+73. The Host (The Host, #1) — Stephenie Meyer — ₹741
+74. Looking for Alaska — John Green — ₹354
+75. Bridget Jones's Diary (Bridget Jones, #1) — Helen Fielding — ₹353
+76. Sense and Sensibility — Jane Austen — ₹375
+77. Holes (Holes, #1) — Louis Sachar — ₹381
+78. The Devil Wears Prada (The Devil Wears Prada, #1) — Lauren Weisberger — ₹384
+79. The Odyssey — Homer — ₹396
+80. The Little Prince — Antoine de Saint-Exupéry — ₹428
+81. The Glass Castle — Jeannette Walls — ₹437
+82. Into the Wild — Jon Krakauer — ₹437
+83. A Tale of Two Cities — Charles Dickens — ₹443
+84. Jurassic Park (Jurassic Park, #1) — Michael Crichton — ₹459
+85. The Giving Tree — Shel Silverstein — ₹486
+86. A Time to Kill — John Grisham — ₹484
+87. Night (The Night Trilogy #1) — Elie Wiesel — ₹505
+88. Paper Towns — John Green — ₹500
+89. The Princess Bride — William Goldman — ₹526
+90. The Outsiders — S.E. Hinton — ₹529
+91. The Maze Runner (Maze Runner, #1) — James Dashner — ₹539
+92. Freakonomics: A Rogue Economist Explores the Hidden Side of Everything (Freakonomics, #1) — Steven D. Levitt — ₹546
+93. The Secret Garden — Frances Hodgson Burnett — ₹565
+94. One Hundred Years of Solitude — Gabriel García Márquez — ₹573
+95. The Picture of Dorian Gray — Oscar Wilde — ₹584
+96. Fifty Shades Freed (Fifty Shades, #3) — E.L. James — ₹588
+97. Dracula — Bram Stoker — ₹603
+98. The Girl Who Played with Fire (Millennium, #2) — Stieg Larsson — ₹623
+99. Fifty Shades Darker (Fifty Shades, #2) — E.L. James — ₹621
+100. The Poisonwood Bible — Barbara Kingsolver — ₹638
+101. Me Talk Pretty One Day — David Sedaris — ₹647
+102. Where the Wild Things Are — Maurice Sendak — ₹667
+103. The Count of Monte Cristo — Alexandre Dumas — ₹678
+104. The Road — Cormac McCarthy — ₹679
+105. Allegiant (Divergent, #3) — Veronica Roth — ₹678
+106. Bossypants — Tina Fey — ₹701
+107. A Walk to Remember — Nicholas Sparks — ₹720
+108. Confessions of a Shopaholic (Shopaholic, #1) — Sophie Kinsella — ₹710
+109. Les Misérables — Victor Hugo — ₹741
+110. A Clash of Kings  (A Song of Ice and Fire, #2) — George R.R. Martin — ₹762
+111. The Memory Keeper's Daughter — Kim Edwards — ₹337
+112. Me Before You (Me Before You, #1) — Jojo Moyes — ₹372
+113. Catch-22 — Joseph Heller — ₹372
+114. Tuesdays with Morrie — Mitch Albom — ₹386
+115. Middlesex — Jeffrey Eugenides — ₹394
+116. The Adventures of Tom Sawyer — Mark Twain — ₹402
+117. A Wrinkle in Time (A Wrinkle in Time Quintet, #1) — Madeleine L'Engle — ₹419
+118. The Joy Luck Club — Amy Tan — ₹424
+119. The Handmaid's Tale — Margaret Atwood — ₹441
+120. The Sisterhood of the Traveling Pants (Sisterhood, #1) — Ann Brashares — ₹441
+121. Lolita — Vladimir Nabokov — ₹456
+122. Wicked: The Life and Times of the Wicked Witch of the West (The Wicked Years, #1) — Gregory Maguire — ₹454
+123. The Firm (Penguin Readers, Level 5) — John Grisham — ₹483
+124. Room — Emma Donoghue — ₹495
+125. Hamlet — William Shakespeare — ₹505
+126. Dune (Dune Chronicles #1) — Frank Herbert — ₹523
+127. The Tipping Point: How Little Things Can Make a Big Difference — Malcolm Gladwell — ₹524
+128. Steve Jobs — Walter Isaacson — ₹541
+129. One Flew Over the Cuckoo's Nest — Ken Kesey — ₹556
+130. The Old Man and the Sea — Ernest Hemingway — ₹550
+131. The Grapes of Wrath — John Steinbeck — ₹568
+132. The Five People You Meet in Heaven — Mitch Albom — ₹578
+133. Anne of Green Gables (Anne of Green Gables, #1) — L.M. Montgomery — ₹602
+134. City of Glass (The Mortal Instruments, #3) — Cassandra Clare — ₹617
+135. A Storm of Swords (A Song of Ice and Fire, #3) — George R.R. Martin — ₹636
+136. Divine Secrets of the Ya-Ya Sisterhood — Rebecca Wells — ₹618
+137. Outlander (Outlander, #1) — Diana Gabaldon — ₹645
+138. The Scarlet Letter — Nathaniel Hawthorne — ₹624
+139. Miss Peregrine’s Home for Peculiar Children (Miss Peregrine’s Peculiar Children, #1) — Ransom Riggs — ₹655
+140. The Girl Who Kicked the Hornet's Nest (Millennium, #3) — Stieg Larsson — ₹678
+141. The Martian — Andy Weir — ₹696
+142. The Pillars of the Earth (The Kingsbridge Series, #1) — Ken Follett — ₹703
+143. All the Light We Cannot See — Anthony Doerr — ₹715
+144. Unbroken: A World War II Story of Survival, Resilience, and Redemption — Laura Hillenbrand — ₹729
+145. Deception Point — Dan Brown — ₹712
+146. The Goldfinch — Donna Tartt — ₹731
+147. Thirteen Reasons Why — Jay Asher — ₹748
+148. Girl with a Pearl Earring — Tracy Chevalier — ₹345
+149. If I Stay (If I Stay, #1) — Gayle Forman — ₹360
+150. The Red Tent — Anita Diamant — ₹379
+151. The Sea of Monsters (Percy Jackson and the Olympians, #2) — Rick Riordan — ₹393
+152. Dear John — Nicholas Sparks — ₹395
+153. City of Ashes (The Mortal Instruments, #2) — Cassandra Clare — ₹414
+154. Macbeth — William Shakespeare — ₹412
+155. The Two Towers (The Lord of the Rings, #2) — J.R.R. Tolkien — ₹444
+156. Something Borrowed (Darcy & Rachel, #1) — Emily Giffin — ₹433
+157. Green Eggs and Ham — Dr. Seuss — ₹461
+158. Charlie and the Chocolate Factory (Charlie Bucket, #1) — Roald Dahl — ₹465
+159. The Battle of the Labyrinth (Percy Jackson and the Olympians, #4) — Rick Riordan — ₹487
+160. Great Expectations — Charles Dickens — ₹474
+161. The Return of the King (The Lord of the Rings, #3) — J.R.R. Tolkien — ₹513
+162. The Stranger — Albert Camus — ₹503
+163. The Lost Hero (The Heroes of Olympus, #1) — Rick Riordan — ₹529
+164. Eleanor & Park — Rainbow Rowell — ₹531
+165. A Feast for Crows (A Song of Ice and Fire, #4) — George R.R. Martin — ₹542
+166. Matched (Matched, #1) — Ally Condie — ₹537
+167. American Gods (American Gods, #1) — Neil Gaiman — ₹564
+168. The Stand — Stephen King — ₹584
+169. The Last Song — Nicholas Sparks — ₹587
+170. Digital Fortress — Dan Brown — ₹578
+171. Emma — Jane Austen — ₹604
+172. Anna Karenina — Leo Tolstoy — ₹616
+173. A Clockwork Orange — Anthony Burgess — ₹625
+174. The Shack — William Paul Young — ₹627
+175. The Last Olympian (Percy Jackson and the Olympians, #5) — Rick Riordan — ₹667
+176. It — Stephen King — ₹666
+177. Crime and Punishment — Fyodor Dostoyevsky — ₹677
+178. The Bell Jar — Sylvia Plath — ₹680
+179. Angela's Ashes (Frank McCourt, #1) — Frank McCourt — ₹695
+180. Siddhartha — Hermann Hesse — ₹703
+181. In Cold Blood — Truman Capote — ₹716
+182. Beautiful Creatures (Caster Chronicles, #1) — Kami Garcia — ₹716
+183. Clockwork Angel (The Infernal Devices, #1) — Cassandra Clare — ₹749
+184. Matilda — Roald Dahl — ₹758
+185. The Night Circus — Erin Morgenstern — ₹352
+186. The Other Boleyn Girl (The Plantagenet and Tudor Novels, #9) — Philippa Gregory — ₹364
+187. Uglies (Uglies, #1) — Scott Westerfeld — ₹368
+188. A Dance with Dragons (A Song of Ice and Fire, #5) — George R.R. Martin — ₹396
+189. The Lord of the Rings (The Lord of the Rings, #1-3) — J.R.R. Tolkien — ₹413
+190. Wild: From Lost to Found on the Pacific Crest Trail — Cheryl Strayed — ₹404
+191. Watchmen — Alan Moore — ₹430
+192. The Name of the Wind (The Kingkiller Chronicle, #1) — Patrick Rothfuss — ₹449
+193. Outliers: The Story of Success — Malcolm Gladwell — ₹443
+194. Moby-Dick or, The Whale — Herman Melville — ₹429
+195. The Guernsey Literary and Potato Peel Pie Society — Mary Ann Shaffer — ₹466
+196. Fight Club — Chuck Palahniuk — ₹480
+197. Dead Until Dark (Sookie Stackhouse, #1) — Charlaine Harris — ₹481
+198. The Color Purple — Alice Walker — ₹500
+199. Marley and Me: Life and Love With the World's Worst Dog — John Grogan — ₹510
+200. And Then There Were None — Agatha Christie — ₹525

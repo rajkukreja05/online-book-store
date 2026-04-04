@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist - BookHaven</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/revenue.css">
+</head>
+<body data-no-offer-popup="true">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><i class="fas fa-book-open"></i><span>BookHaven</span></a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="catalog.html">Catalog</a>
+                <a href="contact.html">Contact</a>
+                <a href="wishlist.html" class="wishlist-link active" aria-label="Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="wishlist-count">0</span>
+                </a>
+                <a href="#" id="nav-cart" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <div id="auth-links">
+                    <a href="login.html" class="btn-login">Login</a>
+                    <a href="signup.html" class="btn-signup">Sign Up</a>
+                </div>
+                <div id="user-menu" class="user-menu" style="display:none;">
+                    <a href="#" id="username-display"></a>
+                    <div class="dropdown">
+                        <a href="profile.html">My Profile</a>
+                        <a href="orders.html">My Orders</a>
+                        <a href="#" onclick="logout()">Logout</a>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Your wishlist</h1>
+            <p>Save books for later and add to cart anytime</p>
+        </div>
+    </section>
+
+    <section class="featured-section" style="padding-top:40px;">
+        <div class="container">
+            <div class="wishlist-toolbar">
+                <p class="wishlist-toolbar-copy">
+                    <strong>BookHaven Share</strong> — send your picks to a friend. They open the link to see the same titles and can save them with one tap.
+                </p>
+                <div class="wishlist-toolbar-actions">
+                    <button type="button" class="btn-primary" id="btn-copy-wishlist-share">
+                        <i class="fas fa-link"></i> Copy share link
+                    </button>
+                </div>
+            </div>
+
+            <div id="wishlist-shared-wrap" class="wishlist-shared-wrap" style="display:none;">
+                <div class="wishlist-shared-banner">
+                    <div>
+                        <h2 class="wishlist-shared-title">Shared with you</h2>
+                        <p class="wishlist-shared-sub">Books from someone else’s wishlist link.</p>
+                    </div>
+                    <button type="button" class="btn-secondary" id="btn-save-shared-wishlist">
+                        <i class="fas fa-heart"></i> Save all to my wishlist
+                    </button>
+                </div>
+                <div class="books-grid" id="wishlist-shared-grid"></div>
+            </div>
+
+            <h2 class="wishlist-your-title">Your saved books</h2>
+
+            <div id="wishlist-empty" class="empty-cart" style="display:none; text-align:center; padding:40px 0;">
+                <i class="fa-regular fa-heart" style="font-size:40px; color:var(--text-secondary);"></i>
+                <p style="margin-top:12px;">Your wishlist is empty</p>
+                <a href="catalog.html" class="btn-primary" style="margin-top:16px; display:inline-block;">Browse catalog</a>
+            </div>
+
+            <div class="books-grid" id="wishlist-grid"></div>
+        </div>
+    </section>
+
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2><i class="fas fa-shopping-cart"></i> Your Cart</h2>
+            <button class="cart-close" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <div class="empty-cart">
+                <i class="fas fa-shopping-basket"></i>
+                <p>Your cart is empty</p>
+                <a href="catalog.html" class="btn-primary">Start Shopping</a>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total-price">₹0</span>
+            </div>
+            <button class="btn-checkout" onclick="checkout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message">Updated</span>
+    </div>
+
+    <script src="js/api-config.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/wishlist-page.js"></script>
+</body>
+</html>
+

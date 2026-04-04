@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Setup - BookHaven</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .box {
+            background: white;
+            padding: 28px;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+            width: 520px;
+            max-width: 100%;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 22px;
+        }
+        .hint {
+            text-align: center;
+            color: #555;
+            margin-bottom: 18px;
+            line-height: 1.4;
+            font-size: 14px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            align-items: start;
+        }
+        @media (max-width: 520px) {
+            .grid { grid-template-columns: 1fr; }
+        }
+        .qr-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .qr-img {
+            width: 220px;
+            height: 220px;
+            object-fit: contain;
+            border: 1px dashed #ccc;
+            padding: 10px;
+            border-radius: 10px;
+            background: #fafafa;
+        }
+        .form-group { margin-top: 10px; }
+        label { display: block; font-weight: bold; color: #333; margin-bottom: 8px; font-size: 14px; }
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+        }
+        input:focus { border-color: #667eea; }
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 14px;
+        }
+        .btn:hover { opacity: 0.9; }
+        .bottom-link {
+            text-align: center;
+            margin-top: 14px;
+            font-size: 13px;
+        }
+        .bottom-link a { color: #667eea; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1><i class="fas fa-shield-alt"></i> Enable Google OTP</h1>
+        <div class="hint">
+            Scan the QR code using Google Authenticator (or any TOTP app).
+            Then enter the 6-digit code to finish setup.
+        </div>
+
+        <div class="grid">
+            <div class="qr-wrap">
+                <img id="qr-img" class="qr-img" src="" alt="OTP QR code"/>
+                <div id="otp-status" style="font-size:13px;color:#555;">Loading QR…</div>
+            </div>
+
+            <div>
+                <div class="form-group">
+                    <label>6-digit OTP</label>
+                    <input id="otp" type="text" inputmode="numeric" placeholder="123456" autocomplete="one-time-code"/>
+                </div>
+                <button id="enable-btn" class="btn" type="button">
+                    <i class="fas fa-key"></i> Enable OTP
+                </button>
+                <div class="bottom-link">
+                    <a href="login.html">Back to login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api-config.js"></script>
+    <script src="js/otp-setup.js"></script>
+</body>
+</html>
+

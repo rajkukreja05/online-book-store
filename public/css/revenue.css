@@ -1,0 +1,1214 @@
+/* Revenue: ads, referrals, offer modal — BookHaven */
+
+.revenue-top-bar {
+    margin-top: 72px;
+    background: linear-gradient(90deg, #1e1b4b 0%, #4f46e5 45%, #7c3aed 100%);
+    color: #f8fafc;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 10px 16px;
+    position: relative;
+    z-index: 998;
+    overflow: hidden;
+}
+
+.revenue-top-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.revenue-top-bar a {
+    color: #fde68a;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.revenue-top-bar a:hover {
+    color: #fff;
+}
+
+/* Hero + side ads */
+.hero-ads-layout {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    min-height: 100vh;
+}
+
+@media (min-width: 1100px) {
+    .hero-ads-layout {
+        grid-template-columns: 1fr minmax(260px, 300px);
+    }
+}
+
+.hero-ads-layout .hero {
+    min-height: 100vh;
+}
+
+.hero-ads-layout .hero .hero-content {
+    padding-top: 52px;
+}
+
+.hero-promo-strip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    background: rgba(15, 23, 42, 0.88);
+    backdrop-filter: blur(8px);
+    color: #e2e8f0;
+    font-size: 0.85rem;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.hero-promo-strip i {
+    color: #fbbf24;
+}
+
+.hero-promo-strip .strip-cta {
+    color: #fde68a;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.hero-promo-strip .strip-cta:hover {
+    color: #fff;
+}
+
+.hero-ad-column {
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+    padding: 100px 20px 40px;
+    background:
+        linear-gradient(180deg, rgba(79, 70, 229, 0.06), rgba(241, 245, 249, 0.95)),
+        var(--background);
+    border-left: 1px solid var(--border-color);
+}
+
+@media (min-width: 1100px) {
+    .hero-ad-column {
+        display: flex;
+    }
+}
+
+.ad-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.ad-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+}
+
+.ad-card-label {
+    display: block;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    padding: 8px 14px 0;
+}
+
+.ad-card-media {
+    height: 120px;
+    background-size: cover;
+    background-position: center;
+}
+
+.ad-card-body {
+    padding: 14px;
+}
+
+.ad-card-body h4 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 700;
+}
+
+.ad-card-body p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    line-height: 1.45;
+}
+
+.ad-card-body .ad-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.ad-card-body .ad-cta:hover {
+    text-decoration: underline;
+}
+
+/* Sponsored partners row */
+.sponsored-section {
+    padding: 72px 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), transparent);
+}
+
+.sponsored-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.sponsored-card {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 20px;
+    background: var(--card-bg);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+}
+
+.sponsored-card .s-logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #e0e7ff, #ede9fe);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+.sponsored-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 4px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.sponsored-card p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+}
+
+.sponsored-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+/* Refer & earn */
+.referral-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.06) 0%, rgba(124, 58, 237, 0.08) 100%);
+}
+
+.referral-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-top: 40px;
+}
+
+@media (max-width: 900px) {
+    .referral-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.referral-copy-box {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 28px;
+    border: 2px dashed rgba(79, 70, 229, 0.35);
+    box-shadow: var(--shadow);
+}
+
+.referral-copy-box h3 {
+    font-size: 1.35rem;
+    margin-bottom: 12px;
+}
+
+.referral-benefits {
+    list-style: none;
+    margin: 20px 0 24px;
+}
+
+.referral-benefits li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.referral-benefits i {
+    color: var(--success);
+    margin-top: 3px;
+}
+
+.referral-input-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.referral-input-row input {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 0.95rem;
+    background: var(--secondary);
+}
+
+.referral-input-row button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 12px;
+    background: var(--gradient);
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.referral-input-row button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.35);
+}
+
+.referral-note {
+    margin-top: 14px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.referral-visual {
+    text-align: center;
+    padding: 24px;
+}
+
+.referral-visual .big-offer {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.1;
+}
+
+.referral-visual .sub {
+    margin-top: 12px;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* Catalog sidebar ad */
+.catalog-ad-slot {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-color);
+}
+
+.catalog-ad-slot .ad-card {
+    margin-bottom: 0;
+}
+
+/* Offer modal */
+.offer-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(4px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.offer-modal-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.offer-modal {
+    background: var(--card-bg);
+    border-radius: 24px;
+    max-width: 440px;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(15, 23, 42, 0.25);
+    transform: scale(0.92) translateY(12px);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.offer-modal-overlay.is-open .offer-modal {
+    transform: scale(1) translateY(0);
+}
+
+.offer-modal-header {
+    background: var(--gradient);
+    color: #fff;
+    padding: 28px 24px;
+    text-align: center;
+    position: relative;
+}
+
+.offer-modal-header .tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.95;
+    margin-bottom: 8px;
+}
+
+.offer-modal-header h2 {
+    font-size: 1.75rem;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.offer-modal-header p {
+    font-size: 0.95rem;
+    opacity: 0.95;
+    line-height: 1.5;
+}
+
+.offer-modal-body {
+    padding: 24px;
+}
+
+.offer-modal-body ul {
+    margin: 16px 0;
+    padding-left: 1.2rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.offer-modal-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+.offer-modal-actions button {
+    flex: 1;
+    min-width: 120px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.offer-modal-actions .btn-primary-offer {
+    background: var(--gradient);
+    color: #fff;
+}
+
+.offer-modal-actions .btn-primary-offer:hover {
+    box-shadow: 0 8px 24px rgba(79, 70, 229, 0.4);
+}
+
+.offer-modal-actions .btn-ghost-offer {
+    background: var(--secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.offer-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.offer-modal-close:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.checkout-referral-hint {
+    margin-top: 14px;
+    padding: 12px 14px;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    color: #166534;
+    line-height: 1.45;
+}
+
+.checkout-referral-hint strong {
+    color: #14532d;
+}
+
+/* Rotating promo ticker (under top bar) */
+.revenue-ticker-wrap {
+    margin-top: 0;
+    background: #0f172a;
+    color: #e2e8f0;
+    font-size: 0.8rem;
+    padding: 6px 16px;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.revenue-ticker-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.revenue-ticker-inner i {
+    color: #fbbf24;
+}
+
+.revenue-ticker-inner strong {
+    color: #fde68a;
+}
+
+/* Full-width native ad banner */
+.native-ad-fullwidth {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(90deg, #312e81, #4f46e5 50%, #6366f1);
+    color: #fff;
+}
+
+.native-ad-fullwidth .native-ad-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 18px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.native-ad-fullwidth h3 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.native-ad-fullwidth p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.95;
+    flex: 1;
+    min-width: 200px;
+}
+
+.native-ad-fullwidth .native-ad-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #312e81;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.native-ad-fullwidth .native-ad-cta:hover {
+    background: #fff;
+    transform: translateY(-1px);
+}
+
+.native-ad-badge {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* Newsletter / lead gen */
+.newsletter-revenue {
+    padding: 56px 0;
+    background: linear-gradient(180deg, #fff 0%, #f1f5f9 100%);
+    border-top: 1px solid var(--border-color);
+}
+
+.newsletter-revenue .newsletter-box {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 16px;
+}
+
+.newsletter-revenue h3 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+.newsletter-revenue .sub {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.newsletter-form input[type="email"] {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 1rem;
+}
+
+.newsletter-form button {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 12px;
+    background: var(--gradient);
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.newsletter-form button:hover {
+    box-shadow: 0 8px 22px rgba(79, 70, 229, 0.35);
+}
+
+.newsletter-fine-print {
+    margin-top: 12px;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    line-height: 1.45;
+}
+
+/* Sticky bottom referral CTA */
+.revenue-sticky-cta {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9998;
+    background: rgba(15, 23, 42, 0.96);
+    backdrop-filter: blur(10px);
+    color: #f8fafc;
+    padding: 12px 16px;
+    box-shadow: 0 -8px 32px rgba(15, 23, 42, 0.25);
+    transform: translateY(110%);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.revenue-sticky-cta.is-visible {
+    transform: translateY(0);
+}
+
+.revenue-sticky-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.revenue-sticky-cta .msg {
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.revenue-sticky-cta .msg i {
+    color: #fbbf24;
+}
+
+.revenue-sticky-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.revenue-sticky-actions a,
+.revenue-sticky-actions button {
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition);
+}
+
+.revenue-sticky-actions .btn-solid {
+    background: var(--gradient);
+    color: #fff;
+}
+
+.revenue-sticky-actions .btn-outline {
+    background: transparent;
+    color: #e2e8f0;
+    border: 1px solid rgba(148, 163, 184, 0.5);
+}
+
+.revenue-sticky-actions a.btn-outline {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.revenue-sticky-actions .btn-ghost-dismiss {
+    background: transparent;
+    color: #94a3b8;
+    padding: 8px 10px;
+}
+
+.revenue-sticky-actions .btn-ghost-dismiss:hover {
+    color: #fff;
+}
+
+body.revenue-sticky-on {
+    padding-bottom: 72px;
+}
+
+/* Book details revenue row */
+.detail-revenue-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border-color);
+}
+
+@media (max-width: 768px) {
+    .detail-revenue-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.detail-revenue-ad .ad-card {
+    height: 100%;
+}
+
+.detail-referral-mini {
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(124, 58, 237, 0.1));
+    border: 1px dashed rgba(79, 70, 229, 0.35);
+    border-radius: 16px;
+    padding: 22px;
+}
+
+.detail-referral-mini h4 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.detail-referral-mini p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+    line-height: 1.5;
+}
+
+.detail-referral-mini .mini-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.btn-copy-code {
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    color: var(--text-primary);
+}
+
+.btn-copy-code:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* Contact page: sidebar ads */
+.contact-outer {
+    display: grid;
+    grid-template-columns: 1fr minmax(260px, 300px);
+    gap: 24px;
+    align-items: start;
+    margin-bottom: 50px;
+}
+
+@media (max-width: 960px) {
+    .contact-outer {
+        grid-template-columns: 1fr;
+    }
+}
+
+.contact-revenue-side {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.contact-revenue-side h4 {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+/* Catalog: leaderboard strip */
+.catalog-leaderboard-ad {
+    grid-column: 1 / -1;
+    margin-bottom: 16px;
+}
+
+.catalog-leaderboard-ad .native-ad-inner {
+    border-radius: 14px;
+    background: linear-gradient(120deg, #1e293b, #334155);
+    color: #f8fafc;
+    padding: 14px 18px;
+}
+
+.catalog-leaderboard-ad .native-ad-inner h3 {
+    color: #fff;
+}
+
+.catalog-leaderboard-ad .native-ad-inner p {
+    color: #cbd5e1;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.catalog-leaderboard-ad .native-ad-cta {
+    background: #f8fafc;
+    color: #1e293b;
+}
+
+/* Bundle upsell checkout */
+.checkout-bundle-hint {
+    margin-top: 10px;
+    padding: 12px 14px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    color: #1e40af;
+    line-height: 1.45;
+}
+
+/* ========== Advertisement motion (animations) ========== */
+
+@keyframes ad-gradient-flow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes ad-shimmer-sweep {
+    0% {
+        transform: translateX(-130%) skewX(-16deg);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.45;
+    }
+    100% {
+        transform: translateX(180%) skewX(-16deg);
+        opacity: 0;
+    }
+}
+
+@keyframes ad-shimmer-soft {
+    0%,
+    100% {
+        opacity: 0.06;
+    }
+    50% {
+        opacity: 0.14;
+    }
+}
+
+@keyframes ad-ken-burns {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.08);
+    }
+}
+
+@keyframes ad-border-glow {
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(129, 140, 248, 0.35), inset 0 0 20px rgba(79, 70, 229, 0.03);
+    }
+    50% {
+        box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.45), 0 12px 32px rgba(79, 70, 229, 0.12);
+    }
+}
+
+@keyframes ad-float-soft {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes ad-cta-glow {
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.45);
+    }
+    50% {
+        box-shadow: 0 0 20px 4px rgba(255, 255, 255, 0.25);
+    }
+}
+
+@keyframes ad-icon-wiggle {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(3px);
+    }
+    75% {
+        transform: translateX(-2px);
+    }
+}
+
+@keyframes ad-fade-rise {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ad-top-bar-sheen {
+    0% {
+        background-position: 0% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+/* Top promo bar — slow moving sheen */
+.revenue-top-bar {
+    background: linear-gradient(
+        110deg,
+        #1e1b4b 0%,
+        #4f46e5 35%,
+        #6366f1 50%,
+        #7c3aed 65%,
+        #1e1b4b 100%
+    );
+    background-size: 200% 100%;
+    animation: ad-top-bar-sheen 14s ease-in-out infinite alternate;
+}
+
+.revenue-top-bar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.12) 50%, transparent 60%);
+    animation: ad-shimmer-sweep 5.5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.revenue-top-bar .revenue-top-inner {
+    position: relative;
+    z-index: 1;
+}
+
+/* Native full-width banner — flowing gradient + periodic shimmer */
+.native-ad-fullwidth {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+        120deg,
+        #312e81 0%,
+        #4f46e5 25%,
+        #6366f1 50%,
+        #7c3aed 75%,
+        #312e81 100%
+    );
+    background-size: 300% 100%;
+    animation: ad-gradient-flow 10s ease infinite;
+}
+
+.native-ad-fullwidth::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, transparent 0%, rgba(255, 255, 255, 0.18) 45%, rgba(255, 255, 255, 0.05) 50%, transparent 70%);
+    animation: ad-shimmer-sweep 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.native-ad-fullwidth .native-ad-inner {
+    position: relative;
+    z-index: 1;
+}
+
+.native-ad-fullwidth .native-ad-cta {
+    position: relative;
+    animation: ad-cta-glow 2.8s ease-in-out infinite;
+}
+
+.native-ad-fullwidth .native-ad-cta i {
+    display: inline-block;
+    animation: ad-icon-wiggle 2s ease-in-out infinite;
+}
+
+/* Hero sidebar & generic ad cards — shimmer + image Ken Burns */
+.hero-ad-column .ad-card,
+.catalog-ad-slot .ad-card,
+.detail-revenue-ad .ad-card,
+.contact-revenue-side .ad-card {
+    position: relative;
+    overflow: hidden;
+    animation: ad-border-glow 4s ease-in-out infinite;
+}
+
+.hero-ad-column .ad-card::after,
+.catalog-ad-slot .ad-card::after,
+.detail-revenue-ad .ad-card::after,
+.contact-revenue-side .ad-card:first-of-type::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45%;
+    height: 100%;
+    background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    animation: ad-shimmer-sweep 4.2s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.ad-card-media {
+    animation: ad-ken-burns 14s ease-in-out infinite alternate;
+    will-change: transform;
+}
+
+/* Sponsored row — staggered entrance + floating icons */
+.sponsored-card {
+    animation: ad-fade-rise 0.7s ease backwards;
+}
+
+.sponsored-card:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.sponsored-card:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.sponsored-card:nth-child(3) {
+    animation-delay: 0.25s;
+}
+
+.sponsored-card .s-logo {
+    animation: ad-float-soft 3.5s ease-in-out infinite;
+}
+
+.sponsored-card:nth-child(2) .s-logo {
+    animation-delay: 0.5s;
+}
+
+.sponsored-card:nth-child(3) .s-logo {
+    animation-delay: 1s;
+}
+
+/* Catalog leaderboard — pulse border + inner shimmer */
+.catalog-leaderboard-ad .native-ad-inner {
+    position: relative;
+    overflow: hidden;
+    animation: ad-border-glow 5s ease-in-out infinite;
+}
+
+.catalog-leaderboard-ad .native-ad-inner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 30%, rgba(148, 163, 184, 0.15) 50%, transparent 70%);
+    animation: ad-shimmer-sweep 5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.catalog-leaderboard-ad .native-ad-inner > * {
+    position: relative;
+    z-index: 1;
+}
+
+.catalog-leaderboard-ad .native-ad-cta {
+    animation: ad-cta-glow 3s ease-in-out infinite;
+}
+
+/* Ticker strip — soft pulse background */
+.revenue-ticker-wrap {
+    position: relative;
+    animation: ad-shimmer-soft 4s ease-in-out infinite;
+}
+
+.revenue-ticker-inner i {
+    display: inline-block;
+    animation: ad-float-soft 2.8s ease-in-out infinite;
+}
+
+/* Sticky CTA — gentle attention pulse on primary button */
+.revenue-sticky-cta.is-visible .btn-solid {
+    animation: ad-cta-glow 2.4s ease-in-out infinite;
+}
+
+/* Newsletter block — subtle border breathe */
+.newsletter-revenue .newsletter-box {
+    border-radius: 20px;
+    padding: 28px 20px;
+    border: 1px solid transparent;
+    background:
+        linear-gradient(#fff, #f8fafc) padding-box,
+        linear-gradient(120deg, #c7d2fe, #a5b4fc, #c4b5fd, #c7d2fe) border-box;
+    background-size: 200% 200%;
+    animation: ad-gradient-flow 8s ease infinite;
+}
+
+/* Hero promo strip — underline pulse on CTA text */
+.hero-promo-strip .strip-cta {
+    position: relative;
+    animation: ad-icon-wiggle 3.5s ease-in-out infinite;
+}
+
+/* Reduced motion: keep layout, drop continuous motion */
+@media (prefers-reduced-motion: reduce) {
+    .revenue-top-bar,
+    .native-ad-fullwidth,
+    .native-ad-fullwidth .native-ad-cta,
+    .native-ad-fullwidth .native-ad-cta i,
+    .hero-ad-column .ad-card,
+    .catalog-ad-slot .ad-card,
+    .detail-revenue-ad .ad-card,
+    .contact-revenue-side .ad-card,
+    .ad-card-media,
+    .sponsored-card,
+    .sponsored-card .s-logo,
+    .catalog-leaderboard-ad .native-ad-inner,
+    .catalog-leaderboard-ad .native-ad-cta,
+    .revenue-ticker-wrap,
+    .revenue-ticker-inner i,
+    .revenue-sticky-cta.is-visible .btn-solid,
+    .newsletter-revenue .newsletter-box,
+    .hero-promo-strip .strip-cta {
+        animation: none !important;
+    }
+
+    .revenue-top-bar::after,
+    .native-ad-fullwidth::before,
+    .hero-ad-column .ad-card::after,
+    .catalog-ad-slot .ad-card::after,
+    .detail-revenue-ad .ad-card::after,
+    .contact-revenue-side .ad-card:first-of-type::after,
+    .catalog-leaderboard-ad .native-ad-inner::before {
+        display: none;
+    }
+
+    .native-ad-fullwidth,
+    .revenue-top-bar {
+        background-size: 100% 100%;
+    }
+}

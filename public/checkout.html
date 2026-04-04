@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - BookHaven</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/revenue.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #1a1a2e; --accent: #e94560; --light: #f8f9fa; --text: #333; --gray: #6c757d;
+        }
+        body { font-family: 'Source Sans Pro', sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%); min-height: 100vh; }
+        .header { background: linear-gradient(135deg, var(--primary), #16213e); color: white; padding: 2rem; text-align: center; }
+        .header h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: .5rem; }
+        .header h1 i { color: var(--accent); margin-right: 1rem; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        @media (max-width: 768px) { .container { grid-template-columns: 1fr; gap: 2rem; } }
+        .checkout-section { background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        .section-title { font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--primary); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .cart-items { max-height: 400px; overflow-y: auto; }
+        .cart-item { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid #eee; }
+        .cart-item img { width: 80px; height: 110px; object-fit: cover; border-radius: 10px; }
+        .item-details h4 { margin-bottom: 0.25rem; }
+        .item-price { font-weight: 600; color: var(--accent); }
+        .total-section { display: flex; justify-content: space-between; font-size: 1.3rem; font-weight: 600; padding: 1rem 0; border-top: 2px solid #eee; }
+        #pay-button { width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--accent), #d63384); color: white; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; margin-top: 1rem; }
+        #pay-button:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(233,69,96,0.4); }
+        #pay-button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        .address-form { display: grid; gap: 1rem; }
+        .form-group { display: flex; flex-direction: column; }
+        .form-group label { font-weight: 600; margin-bottom: 0.25rem; color: var(--primary); }
+        .form-group input { padding: 0.75rem; border: 2px solid #eee; border-radius: 10px; font-size: 1rem; transition: border-color 0.3s; }
+        .form-group input:focus { outline: none; border-color: var(--accent); }
+        .back-btn { background: #6c757d; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 10px; cursor: pointer; text-decoration: none; display: inline-block; margin-top: 1rem; }
+        .empty-cart { text-align: center; padding: 3rem; color: var(--gray); }
+        .empty-cart i { font-size: 4rem; margin-bottom: 1rem; opacity: 0.5; }
+        .coupon-row { display: grid; grid-template-columns: 1fr auto; gap: 10px; margin: 12px 0; }
+        .coupon-row input { padding: 0.75rem; border: 2px solid #eee; border-radius: 10px; }
+        .coupon-row button { padding: 0.75rem 1rem; border: none; border-radius: 10px; background: var(--primary); color: #fff; cursor: pointer; }
+        .wallet-box { margin-top: 10px; padding: 12px; background: #f7f7fb; border-radius: 10px; }
+        .wallet-box label { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+        .line-row { display: flex; justify-content: space-between; margin-top: 8px; color: #444; }
+        #coupon-status { margin-top: 6px; font-size: 0.9rem; color: var(--gray); }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1><i class="fas fa-credit-card"></i> Secure Checkout</h1>
+        <p>Review your order and complete payment</p>
+    </header>
+    
+    <div class="container">
+        <div class="checkout-section">
+            <h2 class="section-title"><i class="fas fa-shopping-cart"></i> Order Summary</h2>
+            <div class="cart-items" id="cart-items">
+                <div class="empty-cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <p>Your cart is empty</p>
+                    <a href="catalog.html" class="back-btn">Continue Shopping</a>
+                </div>
+            </div>
+            <div class="total-section">
+                <span>Total Amount:</span>
+                <span id="total-amount">₹0</span>
+            </div>
+            <div class="coupon-row">
+                <input type="text" id="coupon-code" placeholder="Enter coupon code (e.g. CPN-500-VANSHIKA)">
+                <button type="button" id="apply-coupon-btn">Apply Code</button>
+            </div>
+            <p id="coupon-status"></p>
+            <div class="checkout-referral-hint">
+                <strong>Referral savings:</strong> If you joined with a friend’s link, your <strong>15% first-order</strong> benefit may appear as a coupon or wallet line after verification. Ask support to attach referral codes like <code>REF15</code> or your inviter’s code at checkout when available.
+            </div>
+            <div class="checkout-bundle-hint">
+                <strong>Bundle upsell (revenue):</strong> Add a second book from the same publisher category — some <strong>sponsored bundles</strong> unlock extra cashback at payment time when the campaign is active.
+            </div>
+            <div class="wallet-box">
+                <div class="line-row"><span>Wallet Balance</span><strong id="wallet-balance">₹0</strong></div>
+                <label>
+                    <input type="checkbox" id="use-wallet">
+                    Use wallet balance in this order
+                </label>
+                <div class="line-row"><span>Wallet used</span><strong id="wallet-used">₹0</strong></div>
+                <div class="line-row"><span>Payable</span><strong id="payable-amount">₹0</strong></div>
+            </div>
+            <button id="pay-button" disabled>
+                <i class="fas fa-lock"></i> Pay with Razorpay - Secure Payment
+            </button>
+            <a href="catalog.html" class="back-btn">← Back to Catalog</a>
+        </div>
+        
+        <div class="checkout-section">
+            <h2 class="section-title"><i class="fas fa-map-marker-alt"></i> Delivery Address</h2>
+            <div class="address-form">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Street Address</label>
+                    <input type="text" id="street" placeholder="123 Main St">
+                </div>
+                <div class="form-group">
+                    <label>City</label>
+                    <input type="text" id="city" placeholder="Mumbai">
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" id="phone" placeholder="9876543210">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api-config.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>

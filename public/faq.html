@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - BookHaven</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/faq.css">
+</head>
+<body data-no-offer-popup="true">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><i class="fas fa-book-open"></i><span>BookHaven</span></a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="catalog.html">Catalog</a>
+                <a href="contact.html">Contact</a>
+                <a href="wishlist.html" class="wishlist-link" aria-label="Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="wishlist-count">0</span>
+                </a>
+                <a href="faq.html" class="active">FAQ</a>
+                <a href="#" id="nav-cart" onclick="toggleCart()"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
+                <div id="auth-links"><a href="login.html" class="btn-login">Login</a><a href="signup.html" class="btn-signup">Sign Up</a></div>
+                <div id="user-menu" class="user-menu" style="display:none;">
+                    <a href="#" id="username-display"></a>
+                    <div class="dropdown"><a href="profile.html">My Profile</a><a href="orders.html">My Orders</a><a href="#" onclick="logout()">Logout</a></div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Frequently asked questions</h1>
+            <p>Shipping, payments, returns, and your account</p>
+        </div>
+    </section>
+
+    <section class="faq-wrap">
+        <div class="container">
+            <div class="faq-grid">
+                <div class="faq-card">
+                    <button class="faq-q" type="button" aria-expanded="false">
+                        <span>How do I place an order?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-a" hidden>
+                        Add books to cart, go to checkout, enter delivery details, then pay. You can track your orders from <strong>My Orders</strong>.
+                    </div>
+                </div>
+                <div class="faq-card">
+                    <button class="faq-q" type="button" aria-expanded="false">
+                        <span>Do you support COD?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-a" hidden>
+                        For this demo store, prepaid checkout is enabled. In a real deployment, COD can be added as an extra payment method.
+                    </div>
+                </div>
+                <div class="faq-card">
+                    <button class="faq-q" type="button" aria-expanded="false">
+                        <span>What are your shipping timelines?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-a" hidden>
+                        Most metros: 2–4 days. Other locations: 4–7 days. See <a href="shipping.html">Shipping Info</a>.
+                    </div>
+                </div>
+                <div class="faq-card">
+                    <button class="faq-q" type="button" aria-expanded="false">
+                        <span>What is your return policy?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-a" hidden>
+                        Easy 30-day returns for damaged or incorrect items. See <a href="returns.html">Returns</a> for steps.
+                    </div>
+                </div>
+                <div class="faq-card">
+                    <button class="faq-q" type="button" aria-expanded="false">
+                        <span>How does the wishlist work?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-a" hidden>
+                        Tap the heart on any book card to save it. Your wishlist is stored in your browser and available on the <a href="wishlist.html">Wishlist</a> page.
+                    </div>
+                </div>
+                <div class="faq-card">
+                    <button class="faq-q" type="button" aria-expanded="false">
+                        <span>How do referrals work?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-a" hidden>
+                        Share your invite link. Friends get a discount and you earn wallet credit after their first paid order (see the referral section on Home).
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2><i class="fas fa-shopping-cart"></i> Your Cart</h2>
+            <button class="cart-close" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total-price">₹0</span>
+            </div>
+            <button class="btn-checkout" onclick="checkout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toast-message"></span></div>
+
+    <script src="js/api-config.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/faq.js"></script>
+</body>
+</html>
+

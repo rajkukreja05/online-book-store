@@ -1,0 +1,31 @@
+{
+  "name": "bookstore-server",
+  "version": "1.0.0",
+  "description": "Online Book Store Backend Server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "resync-books": "node scripts/reset-books-to-goodbooks10k.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "csv-parse": "^6.2.1",
+    "dotenv": "^17.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.3",
+    "pdfkit": "^0.18.0",
+    "qrcode": "^1.5.4",
+    "razorpay": "^2.9.6",
+    "speakeasy": "^2.0.0"
+  },
+  "keywords": [
+    "bookstore",
+    "ecommerce",
+    "mongodb"
+  ],
+  "author": "",
+  "license": "ISC"
+}

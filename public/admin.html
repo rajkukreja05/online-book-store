@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - BookHaven ERP/CRM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <div class="admin-logo">
+                <i class="fas fa-book-open"></i>
+                <span>BookHaven</span>
+            </div>
+            <nav class="admin-nav">
+                <a href="#" class="active" data-tab="dashboard" onclick="switchTab('dashboard'); return false;">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </a>
+                <a href="#" data-tab="crm" onclick="switchTab('crm'); return false;">
+                    <i class="fas fa-users"></i> CRM — Customers
+                </a>
+                <a href="#" data-tab="sales" onclick="switchTab('sales'); return false;">
+                    <i class="fas fa-chart-line"></i> Sales reports
+                </a>
+                <a href="#" data-tab="revenue" onclick="switchTab('revenue'); return false;">
+                    <i class="fas fa-coins"></i> Revenue model
+                </a>
+                <a href="#" data-tab="linkage" onclick="switchTab('linkage'); return false;">
+                    <i class="fas fa-link"></i> Stock vs sales
+                </a>
+                <a href="#" data-tab="idic" onclick="switchTab('idic'); return false;">
+                    <i class="fas fa-bullseye"></i> IDIC CRM
+                </a>
+                <a href="#" data-tab="scm" onclick="switchTab('scm'); return false;">
+                    <i class="fas fa-truck"></i> Supply Chain
+                </a>
+                <a href="#" data-tab="pull-demand" onclick="switchTab('pull-demand'); return false;">
+                    <i class="fas fa-box-open"></i> Pull Demand
+                </a>
+                <a href="#" data-tab="orders" onclick="switchTab('orders'); return false;">
+                    <i class="fas fa-shopping-bag"></i> Orders
+                </a>
+                <a href="#" data-tab="inventory" onclick="switchTab('inventory'); return false;">
+                    <i class="fas fa-boxes"></i> Inventory
+                </a>
+                <a href="index.html">
+                    <i class="fas fa-home"></i> Back to Site
+                </a>
+            </nav>
+            <div class="admin-user">
+                <div class="user-info">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="admin-username">Admin</span>
+                </div>
+                <button type="button" onclick="logout()" class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <h1>Admin — ERP &amp; CRM</h1>
+                <div class="header-actions">
+                    <span id="last-refresh" class="last-refresh">Last updated: --</span>
+                    <button type="button" onclick="refreshData()" class="btn-refresh">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                    <div class="auto-refresh-indicator">
+                        <i class="fas fa-circle"></i> Auto-refresh: ON
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard: operations + decision support -->
+            <section id="dashboard-section" class="admin-section">
+                <h2 class="section-title-bar">Operations</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon orders"><i class="fas fa-shopping-bag"></i></div>
+                        <div class="stat-info">
+                            <h3>Total orders</h3>
+                            <p class="stat-value" id="total-orders">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon revenue"><i class="fas fa-rupee-sign"></i></div>
+                        <div class="stat-info">
+                            <h3>Total revenue</h3>
+                            <p class="stat-value" id="total-revenue">₹0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon pending"><i class="fas fa-clock"></i></div>
+                        <div class="stat-info">
+                            <h3>Pending pipeline</h3>
+                            <p class="stat-value" id="pending-orders">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon delivered"><i class="fas fa-check-circle"></i></div>
+                        <div class="stat-info">
+                            <h3>Delivered</h3>
+                            <p class="stat-value" id="delivered-orders">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="section-title-bar">Decision support (ERP / CRM KPIs)</h2>
+                <div class="stats-grid erp-kpi-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon revenue"><i class="fas fa-users"></i></div>
+                        <div class="stat-info">
+                            <h3>Customers</h3>
+                            <p class="stat-value" id="kpi-customers">—</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orders"><i class="fas fa-calendar-alt"></i></div>
+                        <div class="stat-info">
+                            <h3>MTD revenue</h3>
+                            <p class="stat-value" id="kpi-mtd-revenue">—</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon delivered"><i class="fas fa-warehouse"></i></div>
+                        <div class="stat-info">
+                            <h3>Inventory value (₹)</h3>
+                            <p class="stat-value" id="kpi-inventory-value">—</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon pending"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="stat-info">
+                            <h3>Low-stock SKUs</h3>
+                            <p class="stat-value" id="kpi-low-stock">—</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="charts-row">
+                    <div class="chart-card">
+                        <h3>Revenue — last 7 days</h3>
+                        <canvas id="chart-revenue-7d" height="220"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Top titles by revenue</h3>
+                        <canvas id="chart-top-titles" height="220"></canvas>
+                    </div>
+                </div>
+
+                <div class="recent-orders">
+                    <h2>Recent orders</h2>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Items</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recent-orders-body">
+                            <tr><td colspan="5" class="loading">Loading…</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- CRM -->
+            <section id="crm-section" class="admin-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Customer management (CRM)</h2>
+                </div>
+                <p class="section-hint">Segments: new / regular / VIP — loyalty points from orders and manual awards.</p>
+                <div class="filter-bar">
+                    <input type="search" id="crm-search" placeholder="Search name or email…" class="filter-input">
+                    <select id="crm-segment" class="filter-select">
+                        <option value="">All segments</option>
+                        <option value="new">New</option>
+                        <option value="regular">Regular</option>
+                        <option value="vip">VIP</option>
+                    </select>
+                    <button type="button" class="btn-refresh" onclick="loadCustomers()">Apply</button>
+                </div>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Email</th>
+                            <th>Segment</th>
+                            <th>Orders</th>
+                            <th>Spent (₹)</th>
+                            <th>Loyalty</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="customers-body">
+                        <tr><td colspan="7" class="loading">Loading…</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Sales reports -->
+            <section id="sales-section" class="admin-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Sales reports</h2>
+                </div>
+                <div class="filter-bar">
+                    <label>From <input type="date" id="sales-from" class="filter-input"></label>
+                    <label>To <input type="date" id="sales-to" class="filter-input"></label>
+                    <button type="button" class="btn-refresh" onclick="loadSalesReport()">Run report</button>
+                </div>
+                <div class="sales-summary" id="sales-summary"></div>
+                <div class="chart-card full-width">
+                    <h3>Revenue by day</h3>
+                    <canvas id="chart-sales-series" height="260"></canvas>
+                </div>
+                <table class="admin-table">
+                    <thead>
+                        <tr><th>Status</th><th>Orders</th><th>Revenue (₹)</th></tr>
+                    </thead>
+                    <tbody id="sales-by-status-body"></tbody>
+                </table>
+            </section>
+
+            <section id="revenue-section" class="admin-section" style="display:none;">
+                <div class="section-header">
+                    <h2>Revenue Model</h2>
+                </div>
+                <p class="section-hint">Simple unit-economics view from live sales data. Adjust assumptions to estimate contribution and net outcome.</p>
+                <div class="filter-bar">
+                    <label>COGS %
+                        <input type="number" id="rm-cogs" class="filter-input" value="58" min="0" max="100">
+                    </label>
+                    <label>Marketing %
+                        <input type="number" id="rm-marketing" class="filter-input" value="10" min="0" max="100">
+                    </label>
+                    <label>Payment fee %
+                        <input type="number" id="rm-payment" class="filter-input" value="2" min="0" max="100">
+                    </label>
+                    <label>Shipping / order (₹)
+                        <input type="number" id="rm-shipping" class="filter-input" value="40" min="0">
+                    </label>
+                    <label>Fixed ops (₹)
+                        <input type="number" id="rm-fixed" class="filter-input" value="50000" min="0">
+                    </label>
+                    <button type="button" class="btn-refresh" onclick="loadRevenueModel()">Recalculate</button>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-info"><h3>Gross revenue</h3><p class="stat-value" id="rm-gross">—</p></div></div>
+                    <div class="stat-card"><div class="stat-info"><h3>Gross margin</h3><p class="stat-value" id="rm-margin">—</p></div></div>
+                    <div class="stat-card"><div class="stat-info"><h3>Contribution</h3><p class="stat-value" id="rm-contribution">—</p></div></div>
+                    <div class="stat-card"><div class="stat-info"><h3>Net after fixed ops</h3><p class="stat-value" id="rm-net">—</p></div></div>
+                </div>
+                <div class="charts-row">
+                    <div class="chart-card">
+                        <h3>Revenue breakdown</h3>
+                        <canvas id="chart-revenue-model" height="220"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>KPIs</h3>
+                        <table class="admin-table">
+                            <tbody id="rm-kpis-body">
+                                <tr><td>Loading…</td><td></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Inventory ↔ sales linkage -->
+            <section id="linkage-section" class="admin-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Inventory ↔ sales linkage</h2>
+                </div>
+                <p class="section-hint">On-hand stock vs lifetime units sold — supports reorder decisions.</p>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Stock</th>
+                            <th>Units sold</th>
+                            <th>Revenue (₹)</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="linkage-body">
+                        <tr><td colspan="6" class="loading">Loading…</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="idic-section" class="admin-section" style="display:none;">
+                <div class="section-header"><h2>IDIC CRM Model</h2></div>
+                <p class="section-hint">Identify, Differentiate, Interact, Customize customer strategy.</p>
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-info"><h3>Identify</h3><p class="stat-value" id="idic-identify">—</p></div></div>
+                    <div class="stat-card"><div class="stat-info"><h3>Differentiate</h3><p class="stat-value" id="idic-differentiate">—</p></div></div>
+                    <div class="stat-card"><div class="stat-info"><h3>Interact</h3><p class="stat-value" id="idic-interact">—</p></div></div>
+                    <div class="stat-card"><div class="stat-info"><h3>Customize</h3><p class="stat-value" id="idic-customize">—</p></div></div>
+                </div>
+                <table class="admin-table">
+                    <thead><tr><th>Date</th><th>Name</th><th>Category</th><th>Rating</th><th>Subject</th><th>Status</th></tr></thead>
+                    <tbody id="idic-feedback-body"><tr><td colspan="6" class="loading">Loading…</td></tr></tbody>
+                </table>
+            </section>
+
+            <section id="scm-section" class="admin-section" style="display:none;">
+                <div class="section-header"><h2>Supply Chain Management</h2></div>
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-info"><h3>Total SKUs</h3><p class="stat-value" id="scm-total">—</p></div></div>
+                    <div class="stat-card"><div class="stat-info"><h3>Reorder Now</h3><p class="stat-value" id="scm-reorder">—</p></div></div>
+                    <div class="stat-card"><div class="stat-info"><h3>Review SKU</h3><p class="stat-value" id="scm-review">—</p></div></div>
+                    <div class="stat-card"><div class="stat-info"><h3>Slow Moving</h3><p class="stat-value" id="scm-slow">—</p></div></div>
+                </div>
+                <table class="admin-table">
+                    <thead><tr><th>Title</th><th>Category</th><th>Stock</th><th>Units Sold</th><th>Action</th><th>ETA</th></tr></thead>
+                    <tbody id="scm-body"><tr><td colspan="6" class="loading">Loading…</td></tr></tbody>
+                </table>
+            </section>
+
+            <section id="pull-demand-section" class="admin-section" style="display:none;">
+                <div class="section-header"><h2>Pull Demand Requests</h2></div>
+                <p class="section-hint">Customer-driven demand signals from pre-orders and personal book requests.</p>
+                <div class="filter-bar">
+                    <select id="pull-demand-status" class="filter-select">
+                        <option value="open">Open</option>
+                        <option value="fulfilled">Fulfilled</option>
+                        <option value="cancelled">Cancelled</option>
+                        <option value="all">All</option>
+                    </select>
+                    <select id="pull-demand-type" class="filter-select">
+                        <option value="">All types</option>
+                        <option value="preorder">Pre-order</option>
+                        <option value="personal_request">Personal request</option>
+                    </select>
+                    <button type="button" class="btn-refresh" onclick="loadPullDemandRequests()">Apply</button>
+                </div>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Customer</th>
+                            <th>Type</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Qty</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pull-demand-body">
+                        <tr><td colspan="8" class="loading">Loading…</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="orders-section" class="admin-section" style="display: none;">
+                <div class="section-header">
+                    <h2>All orders</h2>
+                </div>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Items</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="all-orders-body">
+                        <tr><td colspan="7" class="loading">Loading…</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="inventory-section" class="admin-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Inventory management</h2>
+                </div>
+                <div id="inventory-low-stock-warning" class="warning-banner" style="display: none;"></div>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Cover</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inventory-body">
+                        <tr><td colspan="7" class="loading">Loading…</td></tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message"></span>
+    </div>
+
+    <script src="js/api-config.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

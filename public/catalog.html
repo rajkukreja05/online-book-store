@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalog - BookHaven</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/catalog.css">
+    <link rel="stylesheet" href="css/revenue.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><i class="fas fa-book-open"></i><span>BookHaven</span></a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="catalog.html" class="active">Catalog</a>
+                <a href="contact.html">Contact</a>
+                <a href="wishlist.html" class="wishlist-link" aria-label="Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="wishlist-count">0</span>
+                </a>
+                <a href="#" onclick="toggleCart()"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
+                <div id="auth-links"><a href="login.html" class="btn-login">Login</a><a href="signup.html" class="btn-signup">Sign Up</a></div>
+                <div id="user-menu" class="user-menu" style="display:none;">
+                    <a href="#" id="username-display"></a>
+                    <div class="dropdown"><a href="profile.html">My Profile</a><a href="orders.html">My Orders</a><a href="#" onclick="logout()">Logout</a></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Browse our catalog</h1>
+            <p>Simple filters, smoother flow, and faster discovery</p>
+        </div>
+    </section>
+
+    <section class="catalog-section">
+    <div class="container catalog-layout">
+        <aside class="catalog-sidebar">
+            <div class="filter-section">
+            <h3><i class="fas fa-layer-group"></i> Categories</h3>
+            <button class="category-btn" data-category=""><span>All</span><span class="category-count" id="count-all">0</span></button>
+            <button class="category-btn" data-category="Fiction"><span>Fiction</span><span class="category-count">0</span></button>
+            <button class="category-btn" data-category="Science"><span>Science</span><span class="category-count">0</span></button>
+            <button class="category-btn" data-category="Technology"><span>Technology</span><span class="category-count">0</span></button>
+            <button class="category-btn" data-category="History"><span>History</span><span class="category-count">0</span></button>
+            <button class="category-btn" data-category="Biography"><span>Biography</span><span class="category-count">0</span></button>
+            <button class="category-btn" data-category="Self-Help"><span>Self-Help</span><span class="category-count">0</span></button>
+            <button class="category-btn" data-category="Hindi"><span>Hindi</span><span class="category-count">0</span></button>
+            <button class="category-btn" data-category="Other"><span>Other</span><span class="category-count">0</span></button>
+            </div>
+            <div class="filter-section">
+                <h3><i class="fas fa-indian-rupee-sign"></i> Price</h3>
+                <label for="price-range">Max price: <strong id="price-value">₹3000</strong></label>
+                <input id="price-range" type="range" min="0" max="3000" value="3000" style="width:100%;">
+            </div>
+            <div class="catalog-ad-slot">
+                <span class="ad-card-label">Advertisement</span>
+                <article class="ad-card">
+                    <div class="ad-card-media" style="background-image:url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&q=80');"></div>
+                    <div class="ad-card-body">
+                        <h4>Audiobook trial</h4>
+                        <p>Sidebar placements monetize browse time without crowding book results.</p>
+                        <a href="catalog.html?category=Fiction" class="ad-cta">Browse fiction <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </aside>
+
+        <section class="catalog-main-panel">
+            <div class="catalog-leaderboard-ad" role="complementary" aria-label="Sponsored catalog placement">
+                <div class="native-ad-inner">
+                    <div>
+                        <span class="native-ad-badge" style="color:#cbd5e1;">Leaderboard ad</span>
+                        <h3><i class="fas fa-book-open"></i> Featured catalogue buy — publishers pay for this row</h3>
+                        <p>High-intent shoppers see this strip first; ideal for affiliate bundles and new releases.</p>
+                    </div>
+                    <a href="catalog.html?category=Fiction" class="native-ad-cta">Shop featured <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="filters">
+                <input id="search-input" type="search" placeholder="Search title, author...">
+                <select id="sort-select">
+                    <option value="default">Sort: Default</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="title">Title A-Z</option>
+                </select>
+            </div>
+            <div class="results-line">Showing <span id="results-count">0</span> books</div>
+            <div id="catalog-load-error" class="catalog-load-error" role="alert" hidden></div>
+            <div id="catalog-books" class="books-grid"></div>
+        </section>
+        </div>
+    </section>
+
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header"><h2><i class="fas fa-shopping-cart"></i> Your Cart</h2><button class="cart-close" onclick="toggleCart()"><i class="fas fa-times"></i></button></div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-footer"><div class="cart-total"><span>Total:</span><span id="cart-total-price">₹0</span></div><button class="btn-checkout" onclick="checkout()">Proceed to Checkout</button></div>
+    </div>
+    <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toast-message"></span></div>
+
+    <div class="offer-modal-overlay" id="offer-modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="offer-modal-title-cat">
+        <div class="offer-modal">
+            <div class="offer-modal-header">
+                <button type="button" class="offer-modal-close" id="offer-modal-close" aria-label="Close offer"><i class="fas fa-times"></i></button>
+                <span class="tag" id="offer-modal-tag">Referral &amp; welcome offer</span>
+                <h2 id="offer-modal-title">15% off first order + ₹100 for you</h2>
+                <p id="offer-modal-desc">Invite friends with your link from the home page or profile. They save on first purchase — you earn wallet credit.</p>
+            </div>
+            <div class="offer-modal-body">
+                <p><strong>Tip</strong></p>
+                <ul>
+                    <li>Use code-style referrals at checkout when promoted.</li>
+                    <li>Combine with coupons where the order summary allows.</li>
+                </ul>
+                <div class="offer-modal-actions">
+                    <button type="button" class="btn-primary-offer" id="offer-modal-shop">Continue browsing</button>
+                    <button type="button" class="btn-ghost-offer" id="offer-modal-dismiss">Dismiss</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api-config.js"></script>
+    <script src="js/catalog.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/revenue-features.js"></script>
+</body>
+</html>
+

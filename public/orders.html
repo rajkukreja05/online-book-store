@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders - BookHaven</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/orders.css">
+    <style>
+        .order-success-banner {
+            background: linear-gradient(135deg, #d4edda 0%, #e8f5e9 100%);
+            border: 1px solid #28a745;
+            border-radius: 12px;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 14px rgba(40, 167, 69, 0.15);
+        }
+        .order-success-banner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            color: #155724;
+            margin-bottom: 10px;
+        }
+        .order-success-banner p {
+            color: #1e4620;
+            margin-bottom: 16px;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        .banner-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+        .banner-actions a {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 14px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .banner-actions a:hover {
+            transform: translateY(-1px);
+        }
+        .btn-banner-catalog {
+            background: #28a745;
+            color: white;
+        }
+        .btn-banner-checkout {
+            background: #1a1a2e;
+            color: white;
+        }
+        .btn-banner-checkout i, .btn-banner-catalog i {
+            margin-right: 8px;
+        }
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #2c3e50;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 1000;
+        }
+        .toast.show {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-book-open"></i>
+                <span>BookHaven</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="catalog.html">Catalog</a>
+                <a href="checkout.html"><i class="fas fa-credit-card"></i> Checkout</a>
+                <div id="auth-links">
+                    <a href="login.html" class="btn-login">Login</a>
+                    <a href="signup.html" class="btn-signup">Sign Up</a>
+                </div>
+                <div id="user-menu" class="user-menu" style="display:none;">
+                    <a href="#" id="username-display"></a>
+                    <div class="dropdown">
+                        <a href="profile.html">My Profile</a>
+                        <a href="orders.html">My Orders</a>
+                        <a href="#" onclick="logout(); return false;">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="orders-page">
+        <div class="container">
+            <div id="order-success-banner" class="order-success-banner" style="display: none;" role="status">
+                <h2><i class="fas fa-check-circle"></i> Order placed successfully</h2>
+                <p>Thank you for your purchase. Your order appears below. Add more books anytime, then use <strong>Checkout</strong> to pay.</p>
+                <div class="banner-actions">
+                    <a href="catalog.html" class="btn-banner-catalog"><i class="fas fa-book"></i> Continue shopping</a>
+                    <a href="checkout.html" class="btn-banner-checkout"><i class="fas fa-lock"></i> Go to checkout</a>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h1><i class="fas fa-shopping-bag"></i> My Orders</h1>
+                <p>Track and manage your book orders</p>
+            </div>
+
+            <div id="orders-container" class="orders-container">
+                <div class="loading-orders" id="orders-loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading your orders…</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">
+        <span id="toast-message"></span>
+    </div>
+
+    <script src="js/api-config.js"></script>
+    <script src="js/orders.js"></script>
+</body>
+</html>

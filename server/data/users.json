@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "1",
+    "name": "John Doe",
+    "email": "john@example.com",
+    "password": "$2a$10$XQwGKpPJQ4g7EhYqMxQj3OXqQhUjfYxqxmFGJwKzJmMZjHqXQJqS",
+    "role": "user",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "_id": "2",
+    "name": "Admin User",
+    "email": "admin@bookhaven.com",
+    "password": "$2a$10$XQwGKpPJQ4g7EhYqMxQj3OXqQhUjfYxqxmFGJwKzJmMZjHqXQJqS",
+    "role": "admin",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  }
+]

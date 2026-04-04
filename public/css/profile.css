@@ -1,0 +1,205 @@
+/* Profile Page Styles */
+
+.page-header {
+    padding: 120px 0 60px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.page-header p {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+.profile-section {
+    padding: 60px 0;
+    background: var(--background);
+    min-height: 60vh;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Profile Sidebar */
+.profile-sidebar {
+    background: var(--card-bg);
+    border-radius: 18px;
+    padding: 30px;
+    text-align: center;
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.profile-avatar {
+    font-size: 5rem;
+    color: var(--accent);
+    margin-bottom: 15px;
+}
+
+.profile-sidebar h3 {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+
+.profile-sidebar p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+}
+
+.profile-nav {
+    text-align: left;
+}
+
+.profile-nav a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.profile-nav a:hover,
+.profile-nav a.active {
+    background: var(--secondary);
+    color: var(--text-primary);
+}
+
+.profile-nav a.active {
+    color: var(--accent);
+}
+
+.profile-nav a i {
+    width: 20px;
+}
+
+/* Profile Content */
+.profile-content {
+    min-height: 500px;
+}
+
+.profile-tab {
+    display: none;
+}
+
+.profile-tab.active {
+    display: block;
+}
+
+.profile-card {
+    background: var(--card-bg);
+    border-radius: 18px;
+    padding: 30px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.profile-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.profile-card .form-group {
+    margin-bottom: 20px;
+}
+
+.profile-card label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.profile-card input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: #f8fafc;
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.profile-card input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.profile-card input:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.profile-card button {
+    margin-top: 10px;
+}
+
+.coupons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 14px;
+}
+
+.coupon-card {
+    border: 1px dashed var(--accent);
+    border-radius: 10px;
+    padding: 14px;
+    background: #f8fafc;
+}
+
+.coupon-card h4 {
+    margin: 0 0 8px;
+    font-size: 1.05rem;
+}
+
+.coupon-meta {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 6px;
+}
+
+.coupon-note {
+    font-size: 0.95rem;
+    margin-top: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-sidebar {
+        position: static;
+    }
+}
+
+@media (max-width: 576px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}

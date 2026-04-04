@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BookHaven — bestsellers, Hindi titles, flash deals, secure checkout, and curated picks. Shop books with offers, referrals, and fast delivery.">
+    <title>BookHaven — Online Bookstore | Deals &amp; New Releases</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/revenue.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-book-open"></i>
+                <span>BookHaven</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="catalog.html">Catalog</a>
+                <a href="contact.html">Contact</a>
+                <a href="wishlist.html" class="wishlist-link" aria-label="Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="wishlist-count">0</span>
+                </a>
+                <a href="#" id="nav-cart" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <div id="auth-links">
+                    <a href="login.html" class="btn-login">Login</a>
+                    <a href="signup.html" class="btn-signup">Sign Up</a>
+                </div>
+                <div id="user-menu" class="user-menu" style="display: none;">
+                    <a href="#" id="username-display"></a>
+                    <div class="dropdown">
+                        <a href="profile.html">My Profile</a>
+                        <a href="orders.html">My Orders</a>
+                        <a href="admin.html" id="admin-link" style="display: none;">Admin Dashboard</a>
+                        <a href="#" onclick="logout()">Logout</a>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="revenue-top-bar" role="region" aria-label="Promotions and referral rewards">
+        <div class="revenue-top-inner">
+            <span><i class="fas fa-gift"></i> Refer a friend — you earn <strong>₹100</strong> wallet credit when they place their first order. They get <strong>15% off</strong>.</span>
+            <a href="#refer-earn">View referral program</a>
+        </div>
+    </div>
+
+    <div class="revenue-ticker-wrap" aria-live="polite">
+        <div class="revenue-ticker-inner" id="revenue-ticker-text">
+            <i class="fas fa-star"></i>
+            <span>Loading offers…</span>
+        </div>
+    </div>
+
+    <div class="flash-sale-bar" role="region" aria-label="Limited time offer">
+        <div class="flash-sale-inner">
+            <div class="flash-sale-left">
+                <span class="flash-pulse" aria-hidden="true"></span>
+                <strong>Flash hours</strong>
+                <span class="flash-copy">Extra <em>8% off</em> carts over ₹799 — stacks with free shipping.</span>
+            </div>
+            <div class="flash-countdown" id="flash-countdown" aria-live="polite">
+                <span><b id="fc-h">00</b><small>h</small></span>
+                <span class="fc-sep">:</span>
+                <span><b id="fc-m">00</b><small>m</small></span>
+                <span class="fc-sep">:</span>
+                <span><b id="fc-s">00</b><small>s</small></span>
+            </div>
+            <a href="catalog.html" class="flash-cta">Grab deal <i class="fas fa-chevron-right"></i></a>
+        </div>
+    </div>
+
+    <div class="coupon-strip" id="welcome-coupon">
+        <div class="coupon-strip-inner">
+            <span class="coupon-label"><i class="fas fa-ticket-alt"></i> First order</span>
+            <code id="coupon-code-display">BH-WELCOME10</code>
+            <span class="coupon-hint">10% off — apply at checkout</span>
+            <button type="button" class="btn-coupon-copy" id="btn-copy-welcome-coupon" aria-label="Copy coupon code"><i class="fas fa-copy"></i> Copy code</button>
+        </div>
+    </div>
+
+    <div class="hero-ads-layout">
+        <section class="hero">
+            <div class="hero-promo-strip">
+                <i class="fas fa-tags"></i>
+                <span>Limited-time: stack referral savings with free shipping on orders above ₹500.</span>
+                <a href="#refer-earn" class="strip-cta">See how referrals work →</a>
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <p class="hero-eyebrow"><i class="fas fa-bookmark"></i> Trusted by readers · Rated 4.8/5 · 12k+ orders shipped</p>
+                <h1>Discover Your Next <span class="highlight">Great Read</span></h1>
+                <p>Shop like a major bookstore: flash deals, bank offers, curated categories — without the clutter.</p>
+                <div class="hero-buttons">
+                    <a href="catalog.html" class="btn-primary">Browse Catalog</a>
+                    <a href="catalog.html?category=Hindi" class="btn-secondary">Hindi Books</a>
+                    <a href="#shelf-mood" class="btn-tertiary">Shelf Mood Matcher <i class="fas fa-wand-magic-sparkles"></i></a>
+                </div>
+            </div>
+        </section>
+        <aside class="hero-ad-column" aria-label="Sponsored placements">
+            <span class="ad-card-label">Advertisement</span>
+            <article class="ad-card">
+                <div class="ad-card-media" style="background-image:url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80');"></div>
+                <div class="ad-card-body">
+                    <h4>Kindle Unlimited — Partner offer</h4>
+                    <p>Discover millions of titles. Sponsored placement helps us keep BookHaven free to browse.</p>
+                    <a href="catalog.html" class="ad-cta">Explore books <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+            <span class="ad-card-label">Advertisement</span>
+            <article class="ad-card">
+                <div class="ad-card-media" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=80');"></div>
+                <div class="ad-card-body">
+                    <h4>Exam prep bundles</h4>
+                    <p>Curated study sets from education partners — revenue share supports new catalogue titles.</p>
+                    <a href="catalog.html?category=Technology" class="ad-cta">Shop tech <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+        </aside>
+    </div>
+
+    <div class="trust-strip" role="region" aria-label="Trust and payments">
+        <div class="trust-strip-inner">
+            <div class="trust-item"><i class="fas fa-lock"></i> Secure SSL checkout</div>
+            <div class="trust-item"><i class="fas fa-truck"></i> Trackable delivery</div>
+            <div class="trust-item"><i class="fas fa-undo-alt"></i> Easy 30-day returns</div>
+            <div class="trust-pay">
+                <span class="trust-pay-label">We accept</span>
+                <span class="pay-icons" aria-hidden="true">
+                    <i class="fab fa-cc-visa" title="Visa"></i>
+                    <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                    <i class="fab fa-google-pay" title="Google Pay"></i>
+                    <i class="fas fa-mobile-alt" title="UPI"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <section class="categories-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Browse by Category</h2>
+                <p>Quick links to find books faster</p>
+            </div>
+            <div class="categories-grid">
+                <a href="catalog.html?category=Fiction" class="category-card"><i class="fas fa-book"></i><h3>Fiction</h3></a>
+                <a href="catalog.html?category=Science" class="category-card"><i class="fas fa-flask"></i><h3>Science</h3></a>
+                <a href="catalog.html?category=Technology" class="category-card"><i class="fas fa-laptop-code"></i><h3>Technology</h3></a>
+                <a href="catalog.html?category=History" class="category-card"><i class="fas fa-landmark"></i><h3>History</h3></a>
+                <a href="catalog.html?category=Biography" class="category-card"><i class="fas fa-user"></i><h3>Biography</h3></a>
+                <a href="catalog.html?category=Self-Help" class="category-card"><i class="fas fa-brain"></i><h3>Self-Help</h3></a>
+                <a href="catalog.html?category=Hindi" class="category-card"><i class="fas fa-book-reader"></i><h3>Hindi</h3></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="shelf-mood-section" id="shelf-mood" aria-labelledby="shelf-mood-title">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="shelf-mood-title"><i class="fas fa-wand-magic-sparkles"></i> Shelf Mood Matcher</h2>
+                <p>A BookHaven-only picker: choose how you want to feel — we send you to a matching aisle. No quiz, no signup.</p>
+            </div>
+            <div class="shelf-mood-grid">
+                <a href="catalog.html?category=Fiction" class="mood-card mood-cozy">
+                    <span class="mood-emoji" aria-hidden="true">🕯️</span>
+                    <h3>Cozy &amp; slow</h3>
+                    <p>Fiction &amp; soft escapes for long evenings.</p>
+                    <span class="mood-cta">Browse mood <i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="catalog.html?category=Science" class="mood-card mood-curious">
+                    <span class="mood-emoji" aria-hidden="true">🔬</span>
+                    <h3>Sharp &amp; curious</h3>
+                    <p>Science &amp; ideas that reward focus.</p>
+                    <span class="mood-cta">Browse mood <i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="catalog.html?category=Self-Help" class="mood-card mood-rise">
+                    <span class="mood-emoji" aria-hidden="true">🚀</span>
+                    <h3>Level up</h3>
+                    <p>Habits, productivity, career — shelf-ready growth.</p>
+                    <span class="mood-cta">Browse mood <i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="catalog.html?category=History" class="mood-card mood-time">
+                    <span class="mood-emoji" aria-hidden="true">🏛️</span>
+                    <h3>Time travel</h3>
+                    <p>History &amp; real stories from other eras.</p>
+                    <span class="mood-cta">Browse mood <i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="catalog.html?category=Hindi" class="mood-card mood-hindi">
+                    <span class="mood-emoji" aria-hidden="true">📚</span>
+                    <h3>Hindi roots</h3>
+                    <p>Regional bestsellers &amp; classics in हिंदी.</p>
+                    <span class="mood-cta">Browse mood <i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="catalog.html?category=Biography" class="mood-card mood-real">
+                    <span class="mood-emoji" aria-hidden="true">✨</span>
+                    <h3>Real lives</h3>
+                    <p>Biographies that read like novels.</p>
+                    <span class="mood-cta">Browse mood <i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="native-ad-fullwidth" role="complementary" aria-label="Sponsored placement">
+        <div class="native-ad-inner">
+            <div>
+                <span class="native-ad-badge">Sponsored — native banner</span>
+                <h3><i class="fas fa-layer-group"></i> Publisher spotlight: new releases every Friday</h3>
+                <p>CPM + performance slots fund curated lists and keep shipping thresholds low for readers.</p>
+            </div>
+            <a href="catalog.html" class="native-ad-cta">Browse new arrivals <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+    <section class="featured-section">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-fire"></i> Trending Books</h2>
+                <p>Most popular books this month</p>
+            </div>
+            <div class="books-grid" id="trending-books"></div>
+            <div class="section-footer">
+                <a href="catalog.html" class="btn-primary">View All Books</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-section home-wishlist-section" id="home-wishlist" aria-labelledby="home-wishlist-title">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="home-wishlist-title"><i class="fa-regular fa-heart"></i> Saved for you</h2>
+                <p>Books you hearted — stored in this browser</p>
+            </div>
+            <div id="home-wishlist-empty" class="home-wishlist-empty" hidden>
+                <p>No saved books yet. Tap the heart on any title to build your list.</p>
+                <a href="catalog.html" class="btn-secondary">Browse catalog</a>
+            </div>
+            <div class="books-grid" id="home-wishlist-books"></div>
+            <div class="section-footer">
+                <a href="wishlist.html" class="btn-primary">Open full wishlist</a>
+                <button type="button" class="btn-tertiary" id="btn-home-copy-wishlist-share" style="margin-left:12px;">
+                    <i class="fas fa-share-alt"></i> Copy share link
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="offers-bank-section" aria-labelledby="offers-bank-title">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="offers-bank-title"><i class="fas fa-credit-card"></i> Bank &amp; cart offers</h2>
+                <p>The kind of promos you see on large marketplaces — transparent labels, no hidden rules in the fine print below.</p>
+            </div>
+            <div class="offers-bank-grid">
+                <article class="offer-bank-card offer-accent">
+                    <span class="offer-tag">Bank partner</span>
+                    <h3>10% instant discount</h3>
+                    <p>On HDFC / ICICI credit cards. Max ₹150 off. Valid on prepaid orders.</p>
+                    <span class="offer-code">BH-BANK10</span>
+                </article>
+                <article class="offer-bank-card">
+                    <span class="offer-tag">Cart rule</span>
+                    <h3>Buy 2 fiction titles</h3>
+                    <p>Get <strong>5% extra off</strong> the pair — applies automatically in cart during promo weeks.</p>
+                    <span class="offer-code">Auto-applied</span>
+                </article>
+                <article class="offer-bank-card">
+                    <span class="offer-tag">UPI cashback</span>
+                    <h3>₹25 back</h3>
+                    <p>On first UPI payment over ₹399. Credited as wallet balance within 48 hours.</p>
+                    <span class="offer-code">UPIFIRST25</span>
+                </article>
+            </div>
+            <p class="offers-legal">Offers are illustrative for demo storefront UI; final savings appear at checkout when your stack qualifies.</p>
+        </div>
+    </section>
+
+    <section class="sponsored-section" id="sponsored">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-ad"></i> Partners &amp; sponsored picks</h2>
+                <p>Brand placements and affiliate-style spots — a transparent extra revenue stream for BookHaven</p>
+            </div>
+            <div class="sponsored-grid">
+                <div class="sponsored-card">
+                    <div class="s-logo"><i class="fas fa-coffee"></i></div>
+                    <div>
+                        <span class="sponsored-badge">Sponsored</span>
+                        <h3>Read &amp; Café nights</h3>
+                        <p>Local café chain — weekend book clubs. We earn a fee when you RSVP through our banner.</p>
+                    </div>
+                </div>
+                <div class="sponsored-card">
+                    <div class="s-logo"><i class="fas fa-pen-nib"></i></div>
+                    <div>
+                        <span class="sponsored-badge">Affiliate</span>
+                        <h3>Stationery &amp; journals</h3>
+                        <p>Premium notebooks for readers. Commission on qualifying purchases via partner links.</p>
+                    </div>
+                </div>
+                <div class="sponsored-card">
+                    <div class="s-logo"><i class="fas fa-graduation-cap"></i></div>
+                    <div>
+                        <span class="sponsored-badge">Education ad</span>
+                        <h3>Online courses</h3>
+                        <p>Non-fiction readers get curated course bundles — CPM + performance slots on this row.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Books</h2>
+                <p>Handpicked selections just for you</p>
+            </div>
+            <div class="books-grid" id="featured-books"></div>
+            <div class="section-footer">
+                <a href="catalog.html" class="btn-primary">View All Books</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="referral-section" id="refer-earn">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-people-arrows"></i> Refer &amp; earn</h2>
+                <p>Word-of-mouth discounts — you grow our community; we share savings back with you</p>
+            </div>
+            <div class="referral-layout">
+                <div class="referral-copy-box">
+                    <h3>Your referral rewards</h3>
+                    <p style="color:var(--text-secondary);font-size:0.95rem;">Share your link. When a friend signs up and checks out, they unlock <strong>15% off</strong> their first order and you receive <strong>₹100</strong> in wallet credit (see checkout &amp; profile for details).</p>
+                    <ul class="referral-benefits">
+                        <li><i class="fas fa-check-circle"></i> Friends apply your code at signup or first checkout</li>
+                        <li><i class="fas fa-check-circle"></i> Discounts combine with site-wide offers where allowed</li>
+                        <li><i class="fas fa-check-circle"></i> Wallet credit appears after their order is paid</li>
+                    </ul>
+                    <label class="referral-note" for="referral-link-home" style="display:block;margin-bottom:8px;">Your invite link</label>
+                    <div class="referral-input-row">
+                        <input type="text" id="referral-link-home" data-referral-link readonly aria-label="Your referral link">
+                        <button type="button" data-copy-referral><i class="fas fa-link"></i> Copy link</button>
+                        <button type="button" class="btn-copy-code" data-copy-referral-code title="Copy referral code"><i class="fas fa-copy"></i> Code</button>
+                    </div>
+                    <p class="referral-note">Your referral code: <strong data-referral-code>—</strong> · <a href="login.html">Log in</a> to activate a personal code.</p>
+                </div>
+                <div class="referral-visual">
+                    <div class="big-offer">15% off</div>
+                    <p class="sub">for your friends’ first order</p>
+                    <p class="sub" style="margin-top:20px;font-size:0.9rem;">Pop-up offers highlight the same program when you land on the site — dismiss anytime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section" aria-labelledby="reviews-title">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="reviews-title"><i class="fas fa-quote-left"></i> Readers say</h2>
+                <p>Social proof — like every serious shop shows on the home page.</p>
+            </div>
+            <div class="testimonials-grid">
+                <blockquote class="testimonial-card">
+                    <div class="testimonial-stars" aria-label="5 stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>“Packaging was excellent and the Hindi section actually had titles I couldn’t find elsewhere.”</p>
+                    <footer><span class="t-avatar">AP</span> Ananya P. · Mumbai</footer>
+                </blockquote>
+                <blockquote class="testimonial-card">
+                    <div class="testimonial-stars" aria-label="5 stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>“The referral + welcome code stacked on my first order. Felt like a real e-commerce checkout.”</p>
+                    <footer><span class="t-avatar">RK</span> Rohan K. · Bengaluru</footer>
+                </blockquote>
+                <blockquote class="testimonial-card">
+                    <div class="testimonial-stars" aria-label="5 stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    <p>“Fast delivery and clear order tracking. Using Shelf Mood to pick fiction was a nice touch.”</p>
+                    <footer><span class="t-avatar">SV</span> Sunita V. · Pune</footer>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter-revenue" id="deals-email">
+        <div class="newsletter-box">
+            <h3>Deals, bundles &amp; partner drops</h3>
+            <p class="sub">Email list monetization — sponsored sends, affiliate book bundles, and member-only codes.</p>
+            <div class="newsletter-form">
+                <input type="email" id="newsletter-email" placeholder="you@example.com" autocomplete="email" aria-label="Email for deals">
+                <button type="button" id="newsletter-submit">Subscribe</button>
+            </div>
+            <p class="newsletter-fine-print">By subscribing you agree to receive marketing email including referral bonuses and third-party offers. Unsubscribe anytime.</p>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shipping-fast"></i></div>
+                    <h3>Free Shipping</h3>
+                    <p>On orders above ₹500</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Secure Payment</h3>
+                    <p>100% secure transactions</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-undo"></i></div>
+                    <h3>Easy Returns</h3>
+                    <p>30-day return policy</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                    <h3>24/7 Support</h3>
+                    <p>Dedicated customer support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>BookHaven</h3>
+                    <p>Your one-stop destination for literary discovery with a cleaner and smoother buying flow.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="catalog.html">Catalog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="index.html#refer-earn">Referral program</a></li>
+                        <li><a href="index.html#shelf-mood">Shelf Mood Matcher</a></li>
+                        <li><a href="index.html#welcome-coupon">Welcome coupon</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="shipping.html">Shipping Info</a></li>
+                        <li><a href="returns.html">Returns</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> support@bookhaven.com</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Book Street, Mumbai 400001</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Monetization</h4>
+                    <ul>
+                        <li><a href="mailto:ads@bookhaven.com?subject=Advertise%20on%20BookHaven">Advertise with us</a></li>
+                        <li><a href="index.html#deals-email">Email deals signup</a></li>
+                        <li><a href="index.html#sponsored">Partner placements</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 BookHaven. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2><i class="fas fa-shopping-cart"></i> Your Cart</h2>
+            <button class="cart-close" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <div class="empty-cart">
+                <i class="fas fa-shopping-basket"></i>
+                <p>Your cart is empty</p>
+                <a href="catalog.html" class="btn-primary">Start Shopping</a>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total-price">₹0</span>
+            </div>
+            <button class="btn-checkout" onclick="checkout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message">Item added to cart!</span>
+    </div>
+
+    <div class="offer-modal-overlay" id="offer-modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="offer-modal-title">
+        <div class="offer-modal">
+            <div class="offer-modal-header">
+                <button type="button" class="offer-modal-close" id="offer-modal-close" aria-label="Close offer"><i class="fas fa-times"></i></button>
+                <span class="tag" id="offer-modal-tag">Referral &amp; welcome offer</span>
+                <h2 id="offer-modal-title">15% off first order + ₹100 for you</h2>
+                <p id="offer-modal-desc">Invite friends with your link. They save on their first purchase — you earn wallet credit after they pay.</p>
+            </div>
+            <div class="offer-modal-body">
+                <p><strong>How it works</strong></p>
+                <ul>
+                    <li>Copy your referral link from the home page or profile.</li>
+                    <li>Your friend signs up and checks out with the referral benefit.</li>
+                    <li>You get ₹100 credit; they enjoy 15% off their first order (see terms at checkout).</li>
+                </ul>
+                <div class="offer-modal-actions">
+                    <button type="button" class="btn-primary-offer" id="offer-modal-shop">Shop with offer</button>
+                    <button type="button" class="btn-ghost-offer" id="offer-modal-dismiss">Maybe later</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="js/api-config.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/revenue-features.js"></script>
+    <script src="js/home-storefront.js"></script>
+
+    <div class="revenue-sticky-cta" id="revenue-sticky-cta" role="region" aria-label="Referral reminder">
+        <div class="revenue-sticky-inner">
+            <div class="msg">
+                <i class="fas fa-paper-plane"></i>
+                <span>Share BookHaven — <strong>15% off</strong> for friends, <strong>₹100</strong> for you.</span>
+            </div>
+            <div class="revenue-sticky-actions">
+                <button type="button" class="btn-solid" id="revenue-sticky-copy"><i class="fas fa-link"></i> Copy invite link</button>
+                <a href="#refer-earn" class="btn-outline">Details</a>
+                <button type="button" class="btn-ghost-dismiss" id="revenue-sticky-dismiss" aria-label="Dismiss">✕</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
