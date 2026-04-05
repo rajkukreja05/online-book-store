@@ -29,13 +29,11 @@
 
     function defaultPortBases(loc) {
         var host = loc.hostname || '127.0.0.1';
-        var proto = loc.protocol === 'https:' ? 'https:' : 'http:';
         var out = [];
+        // Only try alternate ports on real localhost — never :3001 on Vercel/production hosts.
         if (host === 'localhost' || host === '127.0.0.1' || host === '[::1]' || host === '::1') {
             out.push('http://127.0.0.1:3001/api');
             out.push('http://localhost:3001/api');
-        } else {
-            out.push(proto + '//' + host + ':3001/api');
         }
         return out;
     }

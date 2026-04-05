@@ -64,16 +64,27 @@ function showToast(message) {
 }
 
 async function apiPost(path, body) {
-    const res = await fetch(`${API_BASE_URL}${path}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body || {})
-    });
+    let res;
+    try {
+        res = await fetch(`${API_BASE_URL}${path}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body || {})
+        });
+    } catch (netErr) {
+        throw new Error(
+            'Cannot reach the server. If you are on the live site, check that MONGO_URI is set on Vercel and open /api/health.'
+        );
+    }
     const data = await res.json().catch(() => ({}));
     if (!res.ok) {
-        throw new Error(data.message || 'Request failed');
+        throw new Error(data.message || 'Request failed (' + res.status + ')');
     }
     return data;
+}
+
+function isValidEmail(s) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(s || '').trim());
 }
 
 // Signup flow
@@ -91,6 +102,10 @@ if (signupForm) {
             showToast('All fields are required');
             return;
         }
+        if (!isValidEmail(email)) {
+            showToast('Please enter a valid email address');
+            return;
+        }
         if (password !== confirmPassword) {
             showToast('Passwords do not match');
             return;
@@ -98,6 +113,13 @@ if (signupForm) {
         if (password.length < 6) {
             showToast('Password must be at least 6 characters');
             return;
+        }
+
+        const submitBtn = signupForm.querySelector('button[type="submit"]');
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.dataset._label = submitBtn.textContent;
+            submitBtn.textContent = 'Please wait…';
         }
 
         try {
@@ -113,6 +135,11 @@ if (signupForm) {
             window.location.href = `otp-setup.html?setupToken=${encodeURIComponent(setupToken)}`;
         } catch (err) {
             showToast(err.message || 'Signup failed');
+        } finally {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                if (submitBtn.dataset._label) submitBtn.textContent = submitBtn.dataset._label;
+            }
         }
     });
 }
@@ -129,6 +156,17 @@ if (loginForm) {
         if (!email || !password) {
             showToast('Email and password are required');
             return;
+        }
+        if (!isValidEmail(email)) {
+            showToast('Please enter a valid email address');
+            return;
+        }
+
+        const loginBtn = loginForm.querySelector('button[type="submit"]');
+        if (loginBtn) {
+            loginBtn.disabled = true;
+            loginBtn.dataset._label = loginBtn.textContent;
+            loginBtn.textContent = 'Please wait…';
         }
 
         try {
@@ -157,6 +195,11 @@ if (loginForm) {
             showToast('Unexpected auth response. Please try again.');
         } catch (err) {
             showToast(err.message || 'Login failed');
+        } finally {
+            if (loginBtn) {
+                loginBtn.disabled = false;
+                if (loginBtn.dataset._label) loginBtn.textContent = loginBtn.dataset._label;
+            }
         }
     });
 }

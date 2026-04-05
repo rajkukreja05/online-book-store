@@ -1,6 +1,6 @@
 /**
- * Deletes every document in the books collection and inserts the full
- * Goodreads 10k catalog from server/data/goodbooks-10k-books.csv (via bookCatalog).
+ * Deletes every document in the books collection and inserts the catalog from
+ * server/data/goodbooks-10k-books.csv (via bookCatalog; first MAX_CATALOG_BOOKS rows + curated Hindi).
  *
  * Usage: node scripts/reset-books-to-goodbooks10k.js
  */

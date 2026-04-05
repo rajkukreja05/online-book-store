@@ -37,10 +37,32 @@ function loadBooksFromApi(callback) {
         .then(function (books) {
             apiBooks = Array.isArray(books) ? books : [];
             if (typeof window !== 'undefined') window.apiBooks = apiBooks;
+            var errB = document.getElementById('api-books-error');
+            var emB = document.getElementById('api-books-empty');
+            if (errB) errB.hidden = true;
+            if (emB) {
+                if (apiBooks.length === 0) {
+                    emB.hidden = false;
+                    emB.textContent =
+                        'No books in the database yet. On your PC, set MONGO_URI to Atlas in server/.env, run npm start once to seed, then refresh this page.';
+                } else {
+                    emB.hidden = true;
+                }
+            }
             if (callback) callback();
         })
-        .catch(function () {
+        .catch(function (err) {
             apiBooks = [];
+            if (typeof window !== 'undefined') window.apiBooks = apiBooks;
+            if (typeof console !== 'undefined' && console.warn) {
+                console.warn('BookHaven: could not load /api/books', err && err.message ? err.message : err);
+            }
+            var banner = document.getElementById('api-books-error');
+            if (banner) {
+                banner.hidden = false;
+                banner.textContent =
+                    'Books could not be loaded. Open /api/health — if mongo is OK but count is 0, seed Atlas once: run npm start locally with MONGO_URI pointing to Atlas.';
+            }
             if (callback) callback();
         });
 }

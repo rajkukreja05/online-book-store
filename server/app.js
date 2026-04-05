@@ -13,6 +13,19 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
+const PORT = process.env.PORT || 3001;
+
+/** Must run BEFORE DB middleware — otherwise /api/health waits for connect + seed and times out on Vercel. */
+app.get('/api/health', (req, res) => {
+    res.json({
+        ok: true,
+        port: Number(PORT),
+        mongoState: mongoose.connection.readyState,
+        mongoConnected: mongoose.connection.readyState === 1,
+        vercel: process.env.VERCEL === '1'
+    });
+});
+
 let initPromise = null;
 
 async function runSeeds() {
@@ -44,13 +57,17 @@ async function runSeeds() {
     try {
         if (process.env.SEED_REAL_BOOKS === 'false') return;
         if (process.env.SKIP_BOOK_SEED === 'true' || process.env.SKIP_BOOK_SEED === '1') return;
+        // Bulk seed on Vercel often exceeds serverless time limits — seed Atlas once from your PC (npm start).
+        if (process.env.VERCEL === '1' && process.env.FORCE_BOOK_SEED !== '1') {
+            return;
+        }
         const Book = require('./models/Book');
         const { getMongoCatalog } = require('./utils/bookCatalog');
         const realBooks = getMongoCatalog();
         const bookCount = await Book.countDocuments();
         if (bookCount === 0) {
             await Book.insertMany(realBooks.map((b) => ({ ...b })));
-            console.log(`Seeded ${realBooks.length} books (Goodreads 10k CSV or fallback list)`);
+            console.log(`Seeded ${realBooks.length} books (Goodreads CSV subset or fallback list)`);
         }
     } catch (e) {
         console.error('Seed books error:', e);
@@ -89,18 +106,6 @@ app.use('/api/demo-payment', require('./routes/demo-payment'));
 app.use('/api/customers', require('./routes/customers'));
 app.use('/api/analytics', require('./routes/analytics'));
 app.use('/api/feedback', require('./routes/feedback'));
-
-const PORT = process.env.PORT || 3001;
-
-app.get('/api/health', (req, res) => {
-    res.json({
-        ok: true,
-        port: Number(PORT),
-        mongoState: mongoose.connection.readyState,
-        mongoConnected: mongoose.connection.readyState === 1,
-        vercel: process.env.VERCEL === '1'
-    });
-});
 
 app.get('*', (req, res, next) => {
     if (req.path.startsWith('/api')) {

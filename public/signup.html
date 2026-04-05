@@ -119,7 +119,7 @@
     <div class="signup-box">
         <h1>Create Account</h1>
         <p id="ref-welcome" class="note" style="display:none;background:#ecfdf5;border-color:#86efac;color:#14532d;"></p>
-        <form id="signup-form">
+        <form id="signup-form" novalidate>
             <div class="form-group">
                 <label>Full Name</label>
                 <input type="text" id="name" required autocomplete="name">
@@ -144,7 +144,7 @@
         </div>
         <div class="note">
             After signup you will be redirected to <strong>OTP Setup</strong> to scan a QR code (Google Authenticator) and confirm a 6‑digit code.<br>
-            Open this page using <code>http://localhost:3001/signup.html</code> (not file://).
+            Use your live site URL (e.g. <code>https://yoursite.vercel.app/signup.html</code>) or <code>http://localhost:3001/signup.html</code> — not <code>file://</code>.
         </div>
     </div>
 

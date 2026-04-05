@@ -1,6 +1,7 @@
 /**
- * Loads the Goodreads 10k dataset (goodbooks-10k / Kaggle-style notebooks).
+ * Loads a subset of the Goodreads 10k dataset (goodbooks-10k / Kaggle-style notebooks).
  * CSV source: https://github.com/zygmuntz/goodbooks-10k — books.csv
+ * Only the first MAX_CATALOG_BOOKS rows are used so API responses stay faster.
  */
 const fs = require('fs');
 const path = require('path');
@@ -15,6 +16,9 @@ function hasDevanagari(text) {
 }
 
 const CSV_NAME = 'goodbooks-10k-books.csv';
+
+/** Cap CSV rows (full file ~10k). Lower = faster /books and seeding. */
+const MAX_CATALOG_BOOKS = 4000;
 
 let cachedMongoDocs = null;
 let cachedFallback = null;
@@ -106,6 +110,7 @@ function loadFromCsv() {
     for (const row of records) {
         const b = rowToBook(row);
         if (b) out.push(b);
+        if (out.length >= MAX_CATALOG_BOOKS) break;
     }
     return out;
 }
@@ -206,5 +211,6 @@ module.exports = {
     getMongoCatalog,
     getFallbackBooksWithIds,
     getCatalogLength,
-    CSV_NAME
+    CSV_NAME,
+    MAX_CATALOG_BOOKS
 };

@@ -8,7 +8,7 @@ const router = express.Router();
 
 const { getMongoCatalog, getFallbackBooksWithIds } = require('../utils/bookCatalog');
 
-/** Goodreads 10k CSV (or hand realBooks.js if CSV missing). */
+/** Goodreads CSV subset (or hand realBooks.js if CSV missing). */
 const realBooksCatalog = getMongoCatalog();
 
 /** In-memory fallback when MongoDB has no books (ids gb-1… or rb-1…). */

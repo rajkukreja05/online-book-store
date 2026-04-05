@@ -1109,6 +1109,25 @@ section {
     transform: translateY(-2px);
 }
 
+/* Home: API / empty catalog hints (Vercel + Atlas) */
+.api-books-banner {
+    margin: 0 0 8px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    line-height: 1.45;
+}
+.api-books-banner--error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+}
+.api-books-banner--info {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    color: #92400e;
+}
+
 .flash-sale-bar {
     background: linear-gradient(105deg, #7f1d1d 0%, #b91c1c 40%, #ea580c 100%);
     color: #fff7ed;
