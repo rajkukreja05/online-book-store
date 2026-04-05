@@ -1,0 +1,13 @@
+# Render.com — Web Service for the Node API only.
+# After deploy, copy the service URL and set your static frontend:
+#   BOOKSTORE_API_BASE=https://YOUR-SERVICE.onrender.com/api
+# Plus on the API service env:
+#   FRONTEND_ORIGIN=https://YOUR-FRONTEND.vercel.app
+#   MONGO_URI=...   JWT_SECRET=...
+services:
+  - type: web
+    name: bookstore-api
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server/server.js

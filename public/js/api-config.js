@@ -6,8 +6,8 @@
  * - Open from file:// → default http://127.0.0.1:3001/api (change via meta or BOOKSTORE_API_BASE).
  * - Live Server / other dev server: "/api" fails → fetchBookstore() retries 127.0.0.1:3001, localhost, etc.
  *
- * Override: <meta name="bookstore-api-base" content="http://localhost:YOUR_PORT/api">
- * Or: window.BOOKSTORE_API_BASE = 'http://localhost:YOUR_PORT/api';
+ * Override (in order): js/site-config.js → window.BOOKSTORE_API_BASE
+ * Or: <meta name="bookstore-api-base" content="http://localhost:YOUR_PORT/api">
  */
 (function (global) {
     function getBookstoreApiBase() {

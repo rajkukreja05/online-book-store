@@ -2,10 +2,11 @@
   "name": "bookhaven",
   "version": "1.0.0",
   "private": true,
-  "description": "BookHaven — deploy to Vercel (api/index.js) or run locally (server/server.js)",
+  "description": "BookHaven — Vercel monolith (api/index.js), or split: Render API + static public/",
   "scripts": {
     "start": "node server/server.js",
-    "vercel-build": "echo Build skipped — serverless bundles on deploy"
+    "vercel-build": "echo Build skipped — serverless bundles on deploy",
+    "inject-site-config": "node scripts/inject-site-config.js"
   },
   "engines": {
     "node": ">=18.x"

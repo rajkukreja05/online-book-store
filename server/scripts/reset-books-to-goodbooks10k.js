@@ -9,7 +9,8 @@ const mongoose = require('mongoose');
 const Book = require('../models/Book');
 const { getMongoCatalog } = require('../utils/bookCatalog');
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/bookstore';
+const MONGO_URI =
+    process.env.MONGO_URI || process.env.MONGODB_URI || 'mongodb://localhost:27017/bookstore';
 
 async function main() {
     await mongoose.connect(MONGO_URI);

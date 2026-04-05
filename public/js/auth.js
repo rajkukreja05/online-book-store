@@ -78,7 +78,8 @@ async function apiPost(path, body) {
     }
     const data = await res.json().catch(() => ({}));
     if (!res.ok) {
-        throw new Error(data.message || 'Request failed (' + res.status + ')');
+        const parts = [data.message, data.hint].filter(Boolean);
+        throw new Error(parts.length ? parts.join(' ') : 'Request failed (' + res.status + ')');
     }
     return data;
 }

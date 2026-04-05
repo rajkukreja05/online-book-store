@@ -15,7 +15,8 @@ module.exports = async (req, res) => {
         if (!res.headersSent) {
             res.status(503).json({
                 message: 'Database unavailable',
-                hint: 'Set MONGO_URI in Vercel → Settings → Environment Variables (MongoDB Atlas).'
+                hint:
+                    'Set MONGO_URI or MONGODB_URI in Vercel → Environment Variables (MongoDB Atlas connection string). In Atlas → Network Access allow 0.0.0.0/0. Redeploy after saving env vars.'
             });
         }
     }

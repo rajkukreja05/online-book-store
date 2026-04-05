@@ -4,7 +4,12 @@
 const mongoose = require('mongoose');
 
 function getMongoUri() {
-    return process.env.MONGO_URI || 'mongodb://localhost:27017/bookstore';
+    // Vercel/Atlas docs often use MONGODB_URI; we accept both.
+    return (
+        process.env.MONGO_URI ||
+        process.env.MONGODB_URI ||
+        'mongodb://localhost:27017/bookstore'
+    );
 }
 
 let cached = global.__bookhavenMongoose;

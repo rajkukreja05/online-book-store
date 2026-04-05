@@ -3,7 +3,8 @@ const User = require('./models/User');
 const Book = require('./models/Book');
 const Order = require('./models/Order');
 
-const MONGO_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/bookstore';
+const MONGO_URI =
+    process.env.MONGO_URI || process.env.MONGODB_URI || 'mongodb://localhost:27017/bookstore';
 
 async function seed() {
   try {

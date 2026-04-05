@@ -9,7 +9,19 @@ const { connectDb, mongoose } = require('./db');
 
 const app = express();
 
-app.use(cors());
+app.set('trust proxy', 1);
+
+const frontendOriginEnv = (process.env.FRONTEND_ORIGIN || '').trim();
+if (frontendOriginEnv) {
+    app.use(
+        cors({
+            origin: frontendOriginEnv.split(',').map((s) => s.trim()).filter(Boolean),
+            credentials: true
+        })
+    );
+} else {
+    app.use(cors());
+}
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
