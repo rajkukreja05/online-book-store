@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🚀 Online Book Store - Complete Production Setup
 
 ## 🎯 Features
@@ -19,3 +20,6 @@
 3. Get connection string:
    ```
    mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/bookstore?retryWrites=true&w=major
+=======
+# online-book-store
+>>>>>>> 5c804b7436818c1b421156b34c8f3bfc5884d349
